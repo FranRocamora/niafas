@@ -10,9 +10,11 @@
 
 <style>
 
+/* GENERAL */
+
 body{
 margin:0;
-font-family: 'Segoe UI', sans-serif;
+font-family:'Segoe UI', sans-serif;
 background:#fff8f0;
 color:#333;
 }
@@ -166,15 +168,18 @@ color:black;
 
 <body>
 
+<!-- HEADER -->
+
 <header>
 
 <img src="niafas-title.png" class="title-logo">
 
 <h1>Mini Sweet Bites</h1>
-
 <p>Los dulces caseros más deliciosos</p>
 
 </header>
+
+<!-- PRODUCTS -->
 
 <section class="products">
 
@@ -206,6 +211,8 @@ color:black;
 
 </section>
 
+<!-- PRODUCT MODAL -->
+
 <div class="modal" id="productModal">
 
 <div class="modal-content">
@@ -226,6 +233,8 @@ color:black;
 
 </div>
 
+<!-- CONTACT -->
+
 <section class="contact">
 
 <h2>Contáctanos</h2>
@@ -244,6 +253,8 @@ color:black;
 
 </section>
 
+<!-- FOOTER -->
+
 <footer>
 
 <p>Síguenos en Instagram</p>
@@ -256,7 +267,7 @@ color:black;
 
 <script>
 
-function openModal(title,description){
+function openModal(title, description){
 
 document.getElementById("productTitle").innerText = title;
 document.getElementById("productDescription").innerText = description;
@@ -266,12 +277,12 @@ let message = "Hola! Quiero ordenar " + title + " de Niafas Bites.";
 document.getElementById("whatsappBtn").href =
 "https://wa.me/584144332483?text=" + encodeURIComponent(message);
 
-document.getElementById("productModal").style.display="flex";
+document.getElementById("productModal").style.display = "flex";
 
 }
 
 function closeModal(){
-document.getElementById("productModal").style.display="none";
+document.getElementById("productModal").style.display = "none";
 }
 
 </script>
