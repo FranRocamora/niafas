@@ -13,157 +13,190 @@
 /* GENERAL */
 
 body{
-margin:0;
-font-family:'Segoe UI', sans-serif;
-background:#fff8f0;
-color:#333;
+    margin:0;
+    font-family:'Segoe UI', sans-serif;
+    background:#fff8f0;
+    color:#333;
 }
 
 /* HEADER */
 
 header {
-background-color: #844A8E; /* fondo principal */
-background-image: url('chocolate-sprinkles.png'), url('chocolate-sprinkles.png'); /* misma imagen dos veces */
-background-position: left top, right top; /* una a la izquierda y otra a la derecha */
-background-repeat: no-repeat, no-repeat; /* no se repiten */
-padding: 40px;
-text-align: center;
+    background-color: #844A8E;
+    background-image: url('chocolate-sprinkles.png'), url('chocolate-sprinkles.png');
+    background-position: left top, right top;
+    background-repeat: no-repeat, no-repeat;
+    padding: 40px;
+    text-align: center;
 }
 
 .logo{
-width:280px;
+    width:280px;
 }
 
 header h1{
-font-size:42px;
-margin:10px 0;
-color: #fff2cc;
+    font-size:42px;
+    margin:10px 0;
+    color: #f4d03f;
 }
 
 header p{
-font-size:18px;
-color: #fff2cc;
+    font-size:18px;
+    color: #f4d03f;
 }
 
 /* PRODUCTS */
 
 .products{
-padding:60px;
-text-align:center;
+    padding:60px;
+    text-align:center;
 }
 
 .products h2{
-font-size:32px;
-margin-bottom:40px;
+    font-size:32px;
+    margin-bottom:40px;
 }
 
 .grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:30px;
-max-width:1000px;
-margin:auto;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:30px;
+    max-width:1000px;
+    margin:auto;
 }
 
 .card{
-background:white;
-border-radius:16px;
-padding:30px;
-box-shadow:0 10px 25px rgba(0,0,0,0.1);
-cursor:pointer;
-transition:0.3s;
+    background:white;
+    border-radius:16px;
+    padding:30px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.1);
+    cursor:pointer;
+    transition:0.3s;
 }
 
 .card:hover{
-transform:translateY(-10px);
+    transform:translateY(-10px);
 }
 
 .card h3{
-font-size:22px;
-margin:10px 0;
+    font-size:22px;
+    margin:10px 0;
 }
 
 /* MODAL */
 
 .modal{
-display:none;
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,0.6);
-justify-content:center;
-align-items:center;
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.6);
+    justify-content:center;
+    align-items:center;
 }
 
 .modal-content{
-background:white;
-padding:40px;
-border-radius:15px;
-max-width:500px;
-text-align:center;
+    background:white;
+    padding:40px;
+    border-radius:15px;
+    max-width:700px;
+    text-align:left;
+    display:flex;
+    gap:20px;
+    align-items:center;
 }
 
-.modal img{
-width:100%;
-border-radius:10px;
+.slider {
+    position: relative;
+    width:300px;
+    flex-shrink: 0;
+}
+
+.slider img {
+    width:100%;
+    border-radius:10px;
+}
+
+.slider button {
+    position: absolute;
+    top:50%;
+    transform: translateY(-50%);
+    background: rgba(0,0,0,0.5);
+    color:white;
+    border:none;
+    padding:10px;
+    cursor:pointer;
+    border-radius:50%;
+}
+
+#prevBtn {
+    left: -20px;
+}
+
+#nextBtn {
+    right: -20px;
+}
+
+.description {
+    flex:1;
 }
 
 button{
-margin-top:20px;
-background:#25D366;
-color:white;
-border:none;
-padding:12px 25px;
-font-size:16px;
-border-radius:30px;
-cursor:pointer;
+    margin-top:20px;
+    background:#25D366;
+    color:white;
+    border:none;
+    padding:12px 25px;
+    font-size:16px;
+    border-radius:30px;
+    cursor:pointer;
 }
 
 /* CONTACT */
 
 .contact{
-text-align:center;
-padding:70px 20px;
-background:#fff2cc;
+    text-align:center;
+    padding:70px 20px;
+    background:#fff2cc;
 }
 
 .contact h2{
-font-size:32px;
-margin-bottom:20px;
+    font-size:32px;
+    margin-bottom:20px;
 }
 
 .contact-buttons{
-display:flex;
-justify-content:center;
-gap:20px;
-flex-wrap:wrap;
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    flex-wrap:wrap;
 }
 
 .call{
-background:#333;
-color:white;
+    background:#333;
+    color:white;
 }
 
 .whatsapp{
-background:#25D366;
-color:white;
+    background:#25D366;
+    color:white;
 }
 
 /* FOOTER */
 
 footer{
-margin-top:40px;
-padding:30px;
-background:#f4d03f;
-text-align:center;
+    margin-top:40px;
+    padding:30px;
+    background:#f4d03f;
+    text-align:center;
 }
 
 footer a{
-text-decoration:none;
-font-weight:bold;
-color:black;
+    text-decoration:none;
+    font-weight:bold;
+    color:black;
 }
 
 </style>
@@ -195,7 +228,11 @@ color:black;
 <h3>Mini Cookies</h3>
 </div>
 
-<div class="card" onclick="openModal('Pan de Bono','Pan de bono tradicional colombiano con queso, suave por dentro y ligeramente crujiente por fuera.')">
+<div class="card" onclick="openModal(
+    'Pan de Bono',
+    'Nuestros ricos panes de bono están hechos con harina de yuca gluten free y queso de búfala sin lactosa.',
+    ['images/pan-de-bono1.png','images/pan-de-bono2.png']
+)">
 <h3>Pan de Bono</h3>
 </div>
 
@@ -221,17 +258,21 @@ color:black;
 
 <div class="modal-content">
 
-<h2 id="productTitle"></h2>
+<div class="slider">
+    <img id="sliderImage" src="" alt="Producto">
+    <button id="prevBtn">&#10094;</button>
+    <button id="nextBtn">&#10095;</button>
+</div>
 
-<p id="productDescription"></p>
-
-<a id="whatsappBtn" target="_blank">
-<button>Ordena por WhatsApp</button>
-</a>
-
-<br><br>
-
-<button onclick="closeModal()">Cerrar</button>
+<div class="description">
+    <h2 id="productTitle"></h2>
+    <p id="productDescription"></p>
+    <a id="whatsappBtn" target="_blank">
+        <button>Ordena por WhatsApp</button>
+    </a>
+    <br><br>
+    <button onclick="closeModal()">Cerrar</button>
+</div>
 
 </div>
 
@@ -271,22 +312,41 @@ color:black;
 
 <script>
 
-function openModal(title, description){
+let currentImages = [];
+let currentIndex = 0;
 
-document.getElementById("productTitle").innerText = title;
-document.getElementById("productDescription").innerText = description;
+function openModal(title, description, imagesArray){
+    document.getElementById("productTitle").innerText = title;
+    document.getElementById("productDescription").innerText = description;
 
-let message = "Hola! Quiero ordenar " + title + " de Niafas Bites.";
+    if(imagesArray){
+        currentImages = imagesArray;
+        currentIndex = 0;
+        document.getElementById("sliderImage").src = currentImages[currentIndex];
+        document.querySelector(".slider").style.display = "block";
+    } else {
+        document.querySelector(".slider").style.display = "none";
+    }
 
-document.getElementById("whatsappBtn").href =
-"https://wa.me/584144332483?text=" + encodeURIComponent(message);
+    let message = "Hola! Quiero ordenar " + title + " de Niafas Bites.";
+    document.getElementById("whatsappBtn").href =
+        "https://wa.me/584144332483?text=" + encodeURIComponent(message);
 
-document.getElementById("productModal").style.display = "flex";
-
+    document.getElementById("productModal").style.display = "flex";
 }
 
+document.getElementById("prevBtn").addEventListener("click", function(){
+    currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
+    document.getElementById("sliderImage").src = currentImages[currentIndex];
+});
+
+document.getElementById("nextBtn").addEventListener("click", function(){
+    currentIndex = (currentIndex + 1) % currentImages.length;
+    document.getElementById("sliderImage").src = currentImages[currentIndex];
+});
+
 function closeModal(){
-document.getElementById("productModal").style.display = "none";
+    document.getElementById("productModal").style.display = "none";
 }
 
 </script>
