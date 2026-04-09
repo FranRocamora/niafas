@@ -1,323 +1,462 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Niafas Bites</title>
-  <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'Segoe UI', sans-serif; background: #2d0a3e; color: #fff; overflow-x: hidden; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Niafa's Bites</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;700;900&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --purple: #885784;
+  --salmon: #DD8D6E;
+  --olive: #C2AB42;
+  --cream: #F2DBC6;
+  --dark: #2a1a20;
+  --white: #fffaf6;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'DM Sans', sans-serif; background: var(--white); color: var(--dark); overflow-x: hidden; }
 
-    .nb-header {
-      background: #2d0a3e; padding: 0; text-align: center; position: relative;
-      overflow: hidden; min-height: 420px;
-      display: flex; flex-direction: column; align-items: center; justify-content: center;
-    }
-    .nb-header-bg {
-      position: absolute; inset: 0;
-      background: radial-gradient(ellipse 80% 60% at 50% 40%, #7a3090 0%, #4a1060 55%, #2d0a3e 100%);
-    }
-    .nb-glow {
-      position: absolute; top: 30%; left: 50%; transform: translateX(-50%);
-      width: 400px; height: 200px;
-      background: radial-gradient(ellipse, rgba(244,208,63,0.2) 0%, transparent 70%);
-      pointer-events: none;
-    }
-    .nb-deco-svg {
-      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-      pointer-events: none; z-index: 1;
-    }
-    .nb-header-content { position: relative; z-index: 2; padding: 40px 20px; }
-    .nb-logo { width: 190px; filter: drop-shadow(0 0 24px rgba(244,208,63,0.35)); margin-bottom: 18px; }
-    .nb-header h1 {
-      font-size: 48px; font-weight: 900; letter-spacing: -1px;
-      background: linear-gradient(90deg, #f4d03f 0%, #ffffff 50%, #d7a0e8 100%);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-      margin-bottom: 6px; line-height: 1.1;
-    }
-    .nb-header p { font-size: 13px; color: rgba(255,255,255,0.6); letter-spacing: 1px; text-transform: uppercase; }
-    .nb-pill {
-      display: inline-block; border: 1.5px solid rgba(244,208,63,0.5); color: #f4d03f;
-      font-size: 12px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
-      padding: 7px 22px; border-radius: 50px; margin-top: 18px; animation: pillpulse 2.5s infinite;
-    }
-    @keyframes pillpulse {
-      0%,100% { box-shadow: 0 0 0 0 rgba(244,208,63,0.3); }
-      50% { box-shadow: 0 0 0 8px rgba(244,208,63,0); }
-    }
+/* HEADER */
+.header {
+  background: var(--purple);
+  position: relative; overflow: hidden;
+  min-height: 520px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center;
+}
+.header::after {
+  content: '';
+  position: absolute; bottom: -2px; left: 0; right: 0; height: 60px;
+  background: var(--white);
+  clip-path: ellipse(55% 100% at 50% 100%);
+}
+.header-pattern {
+  position: absolute; inset: 0;
+  background-image: radial-gradient(circle, rgba(242,219,198,0.15) 2px, transparent 2px);
+  background-size: 28px 28px;
+}
+.header-deco { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; }
+.header-content { position: relative; z-index: 3; padding: 60px 20px 90px; }
+.header-sticker-hey { position: absolute; top: 28px; right: 7%; z-index: 4; transform: rotate(8deg); animation: float1 3.5s ease-in-out infinite; }
+.header-sticker-ct { position: absolute; bottom: 90px; left: 5%; z-index: 4; transform: rotate(-6deg); animation: float2 4s ease-in-out infinite; }
+@keyframes float1 { 0%,100% { transform: rotate(8deg) translateY(0); } 50% { transform: rotate(8deg) translateY(-10px); } }
+@keyframes float2 { 0%,100% { transform: rotate(-6deg) translateY(0); } 50% { transform: rotate(-6deg) translateY(-8px); } }
+.logo-img { width: 210px; filter: drop-shadow(0 4px 20px rgba(0,0,0,0.25)); margin-bottom: 20px; animation: logoIn 0.8s cubic-bezier(.22,1,.36,1) both; }
+@keyframes logoIn { from { opacity:0; transform:scale(0.8) translateY(20px); } to { opacity:1; transform:scale(1) translateY(0); } }
+.header h1 { font-family:'Fraunces',serif; font-size:52px; font-weight:900; color:var(--cream); line-height:1; margin-bottom:12px; letter-spacing:-1px; animation: fadeUp 0.9s 0.2s cubic-bezier(.22,1,.36,1) both; }
+.header h1 span { color: var(--olive); }
+.header-sub { font-size:13px; letter-spacing:3px; text-transform:uppercase; color:rgba(242,219,198,0.7); margin-bottom:24px; animation: fadeUp 0.9s 0.35s cubic-bezier(.22,1,.36,1) both; }
+.header-pill { display:inline-block; background:var(--olive); color:var(--dark); font-size:12px; font-weight:700; letter-spacing:2px; text-transform:uppercase; padding:8px 24px; border-radius:50px; margin-top:10px; border:2px solid var(--dark); animation: fadeUp 0.9s 0.5s cubic-bezier(.22,1,.36,1) both; }
+@keyframes fadeUp { from { opacity:0; transform:translateY(24px); } to { opacity:1; transform:translateY(0); } }
 
-    .nb-strip { background: #f4d03f; padding: 10px 0; overflow: hidden; white-space: nowrap; }
-    .nb-strip-inner {
-      display: inline-block; animation: marquee 18s linear infinite;
-      font-size: 13px; font-weight: 800; color: #2d0a3e; letter-spacing: 1px; text-transform: uppercase;
-    }
-    @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+/* MARQUEE */
+.marquee-wrap { background:var(--olive); padding:12px 0; overflow:hidden; white-space:nowrap; border-top:3px solid var(--dark); border-bottom:3px solid var(--dark); }
+.marquee-inner { display:inline-block; animation:marquee 22s linear infinite; font-family:'Fraunces',serif; font-size:15px; font-weight:700; color:var(--dark); letter-spacing:1px; }
+@keyframes marquee { from { transform:translateX(0); } to { transform:translateX(-50%); } }
+.marquee-dot { margin:0 18px; color:var(--purple); }
 
-    .nb-products { background: #3a0f50; padding: 70px 24px; text-align: center; }
-    .nb-section-label { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: #f4d03f; font-weight: 700; margin-bottom: 10px; }
-    .nb-products h2 { font-size: 36px; font-weight: 900; color: #fff; margin-bottom: 6px; letter-spacing: -0.5px; }
-    .nb-products-sub { font-size: 14px; color: rgba(255,255,255,0.45); margin-bottom: 48px; }
-    .nb-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 16px; max-width: 980px; margin: 0 auto; }
-    .nb-card {
-      background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 20px; padding: 32px 20px 24px; cursor: pointer;
-      transition: transform 0.28s cubic-bezier(.22,1,.36,1), border-color 0.2s, background 0.2s;
-      position: relative; overflow: hidden; text-align: left;
-    }
-    .nb-card::before {
-      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
-      background: linear-gradient(90deg, #844A8E, #f4d03f, #844A8E); background-size: 200%;
-      animation: shimmer 3s linear infinite; border-radius: 20px 20px 0 0;
-    }
-    @keyframes shimmer { 0% { background-position: 0%; } 100% { background-position: 200%; } }
-    .nb-card:hover { transform: translateY(-12px); border-color: rgba(244,208,63,0.4); background: rgba(132,74,142,0.25); }
-    .nb-card-num { font-size: 11px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: rgba(244,208,63,0.5); margin-bottom: 14px; }
-    .nb-card h3 { font-size: 18px; font-weight: 800; color: #fff; margin-bottom: 10px; line-height: 1.2; }
-    .nb-card p { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.6; }
-    .nb-card-arrow {
-      display: inline-flex; align-items: center; justify-content: center;
-      width: 36px; height: 36px; border-radius: 50%; border: 1px solid rgba(244,208,63,0.4);
-      margin-top: 20px; transition: background 0.2s, transform 0.2s;
-    }
-    .nb-card:hover .nb-card-arrow { background: #f4d03f; transform: rotate(45deg); }
-    .nb-card-arrow svg { width: 14px; height: 14px; stroke: #f4d03f; fill: none; transition: stroke 0.2s; }
-    .nb-card:hover .nb-card-arrow svg { stroke: #2d0a3e; }
+/* PRODUCTS */
+.products { background:var(--white); padding:80px 24px 60px; text-align:center; }
+.section-eyebrow { display:inline-block; font-size:11px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:var(--salmon); background:rgba(221,141,110,0.12); padding:6px 16px; border-radius:50px; margin-bottom:16px; }
+.section-title { font-family:'Fraunces',serif; font-size:46px; font-weight:900; color:var(--purple); margin-bottom:8px; letter-spacing:-1px; line-height:1; }
+.section-title span { color:var(--salmon); }
+.section-sub { font-size:15px; color:rgba(42,26,32,0.5); margin-bottom:56px; }
+.products-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:20px; max-width:1060px; margin:0 auto; }
+.product-card { background:var(--white); border:2.5px solid var(--dark); border-radius:24px; cursor:pointer; transition:transform 0.3s cubic-bezier(.22,1,.36,1), box-shadow 0.3s; position:relative; overflow:hidden; text-align:left; }
+.product-card:hover { transform:translateY(-10px) rotate(-1deg); box-shadow:6px 8px 0 var(--dark); }
+.card-top { height:130px; display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden; }
+.card-body { padding:20px 22px 22px; }
+.card-num { font-size:10px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:rgba(42,26,32,0.35); margin-bottom:6px; }
+.card-name { font-family:'Fraunces',serif; font-size:20px; font-weight:900; color:var(--dark); margin-bottom:8px; line-height:1.15; }
+.card-desc { font-size:13px; color:rgba(42,26,32,0.55); line-height:1.55; margin-bottom:18px; }
+.card-cta { display:inline-flex; align-items:center; gap:8px; font-size:13px; font-weight:700; padding:9px 18px; border-radius:50px; transition:transform 0.2s; color:#fff; }
+.product-card:hover .card-cta { transform:scale(1.04); }
+.card-cta-arrow { transition:transform 0.2s; }
+.product-card:hover .card-cta-arrow { transform:translateX(4px); }
+.card-c1 .card-top { background:#f0e8f5; } .card-c1 .card-cta { background:var(--purple); }
+.card-c2 .card-top { background:#faeee7; } .card-c2 .card-cta { background:var(--salmon); }
+.card-c3 .card-top { background:#f5f0d8; } .card-c3 .card-cta { background:var(--olive); color:var(--dark); }
+.card-c4 .card-top { background:#fdf0e8; } .card-c4 .card-cta { background:var(--purple); }
+.card-c5 .card-top { background:#edf5ef; } .card-c5 .card-cta { background:var(--salmon); }
 
-    .nb-promo { background: #844A8E; padding: 60px 24px; text-align: center; position: relative; overflow: hidden; }
-    .nb-promo::before { content: ''; position: absolute; top: -80px; right: -80px; width: 300px; height: 300px; background: rgba(244,208,63,0.08); border-radius: 50%; }
-    .nb-promo::after { content: ''; position: absolute; bottom: -100px; left: -60px; width: 260px; height: 260px; background: rgba(0,0,0,0.1); border-radius: 50%; }
-    .nb-promo-inner { position: relative; z-index: 1; }
-    .nb-promo-badge { display: inline-block; background: #f4d03f; color: #2d0a3e; font-size: 11px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; padding: 6px 18px; border-radius: 50px; margin-bottom: 18px; }
-    .nb-promo h3 { font-size: 30px; font-weight: 900; color: #fff2cc; margin-bottom: 10px; letter-spacing: -0.5px; }
-    .nb-promo p { font-size: 15px; color: rgba(255,242,204,0.7); max-width: 500px; margin: 0 auto; }
+/* STICKER BAND */
+.sticker-band { background:var(--cream); border-top:3px solid var(--dark); border-bottom:3px solid var(--dark); padding:50px 24px; display:flex; align-items:center; justify-content:center; gap:60px; flex-wrap:wrap; text-align:center; position:relative; overflow:hidden; }
+.sticker-band::before { content:''; position:absolute; inset:0; background-image:radial-gradient(circle, rgba(136,87,132,0.08) 1.5px, transparent 1.5px); background-size:20px 20px; }
+.sticker-item { position:relative; z-index:1; }
+.sticker-title { font-family:'Fraunces',serif; font-size:22px; font-weight:900; color:var(--purple); margin-bottom:6px; }
+.sticker-sub { font-size:13px; color:rgba(42,26,32,0.5); max-width:200px; }
 
-    .nb-reviews { background: #3a0f50; padding: 70px 24px; text-align: center; }
-    .nb-reviews h2 { font-size: 32px; font-weight: 900; color: #fff; margin-bottom: 6px; letter-spacing: -0.5px; }
-    .nb-reviews-sub { font-size: 14px; color: rgba(255,255,255,0.4); margin-bottom: 44px; }
-    .nb-review-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; max-width: 860px; margin: 0 auto; }
-    .nb-rcard { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.1); border-radius: 18px; padding: 24px; text-align: left; transition: border-color 0.2s; }
-    .nb-rcard:hover { border-color: rgba(244,208,63,0.3); }
-    .nb-stars { color: #f4d03f; font-size: 14px; letter-spacing: 3px; margin-bottom: 12px; }
-    .nb-rtext { font-size: 14px; color: rgba(255,255,255,0.6); line-height: 1.65; margin-bottom: 16px; font-style: italic; }
-    .nb-rname { font-size: 12px; font-weight: 800; color: #d7a0e8; letter-spacing: 1px; text-transform: uppercase; }
+/* PROMO */
+.promo { background:var(--purple); padding:70px 24px; text-align:center; position:relative; overflow:hidden; }
+.promo::before { content:''; position:absolute; top:-80px; left:-80px; width:300px; height:300px; background:rgba(194,171,66,0.15); border-radius:50%; }
+.promo::after { content:''; position:absolute; bottom:-100px; right:-60px; width:280px; height:280px; background:rgba(242,219,198,0.08); border-radius:50%; }
+.promo-inner { position:relative; z-index:1; }
+.promo-badge { display:inline-block; background:var(--olive); color:var(--dark); font-size:11px; font-weight:800; letter-spacing:2px; text-transform:uppercase; padding:7px 20px; border-radius:50px; border:2px solid var(--dark); margin-bottom:22px; }
+.promo h3 { font-family:'Fraunces',serif; font-size:38px; font-weight:900; color:var(--cream); margin-bottom:12px; letter-spacing:-0.5px; line-height:1.1; }
+.promo h3 span { color:var(--olive); }
+.promo p { font-size:16px; color:rgba(242,219,198,0.7); max-width:480px; margin:0 auto 30px; line-height:1.6; }
+.promo-btn { display:inline-flex; align-items:center; gap:10px; background:#25D366; color:#fff; font-size:15px; font-weight:800; padding:16px 34px; border-radius:50px; border:2.5px solid var(--dark); text-decoration:none; box-shadow:4px 4px 0 var(--dark); transition:transform 0.15s, box-shadow 0.15s; }
+.promo-btn:hover { transform:translateY(-3px); box-shadow:4px 7px 0 var(--dark); }
 
-    .nb-contact { background: #2d0a3e; padding: 80px 24px; text-align: center; position: relative; overflow: hidden; }
-    .nb-contact-glow { position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 600px; height: 300px; background: radial-gradient(ellipse, rgba(132,74,142,0.35) 0%, transparent 70%); pointer-events: none; }
-    .nb-contact h2 { font-size: 40px; font-weight: 900; color: #fff; margin-bottom: 12px; letter-spacing: -1px; position: relative; z-index: 1; }
-    .nb-contact p { font-size: 15px; color: rgba(255,255,255,0.45); margin-bottom: 36px; position: relative; z-index: 1; }
-    .nb-btn-row { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; position: relative; z-index: 1; }
-    .nb-btn { padding: 16px 36px; font-size: 15px; font-weight: 800; border-radius: 50px; border: none; cursor: pointer; transition: transform 0.15s, box-shadow 0.2s; text-decoration: none; display: inline-block; letter-spacing: 0.5px; }
-    .nb-btn:hover { transform: scale(1.06); }
-    .nb-btn-wa { background: #25D366; color: #fff; }
-    .nb-btn-wa:hover { box-shadow: 0 0 28px rgba(37,211,102,0.4); }
-    .nb-btn-call { background: rgba(255,255,255,0.1); color: #fff; border: 1px solid rgba(255,255,255,0.2); }
-    .nb-btn-call:hover { background: rgba(255,255,255,0.16); }
+/* REVIEWS */
+.reviews { background:var(--white); padding:80px 24px; text-align:center; }
+.reviews-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:20px; max-width:900px; margin:48px auto 0; }
+.review-card { background:var(--cream); border:2.5px solid var(--dark); border-radius:20px; padding:28px 24px; text-align:left; transition:transform 0.25s, box-shadow 0.25s; }
+.review-card:hover { transform:translateY(-6px); box-shadow:5px 6px 0 var(--dark); }
+.review-quote { font-family:'Fraunces',serif; font-size:52px; line-height:0.5; color:var(--salmon); margin-bottom:14px; }
+.review-text { font-size:14px; line-height:1.6; color:var(--dark); margin-bottom:16px; font-style:italic; }
+.review-stars { color:var(--olive); font-size:15px; letter-spacing:2px; margin-bottom:10px; }
+.review-name { font-weight:700; font-size:13px; color:var(--purple); letter-spacing:1px; text-transform:uppercase; }
 
-    .nb-footer { background: #f4d03f; padding: 22px 20px; text-align: center; }
-    .nb-footer p { font-size: 13px; font-weight: 700; color: #2d0a3e; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 1px; }
-    .nb-footer a { font-size: 18px; font-weight: 900; color: #2d0a3e; text-decoration: none; letter-spacing: 0.5px; }
-    .nb-footer a:hover { text-decoration: underline; }
+/* CONTACT */
+.contact { background:var(--salmon); padding:80px 24px; text-align:center; position:relative; overflow:hidden; border-top:3px solid var(--dark); }
+.contact::before { content:''; position:absolute; inset:0; background-image:radial-gradient(circle, rgba(42,26,32,0.06) 1.5px, transparent 1.5px); background-size:22px 22px; }
+.contact-inner { position:relative; z-index:1; }
+.contact h2 { font-family:'Fraunces',serif; font-size:46px; font-weight:900; color:var(--dark); margin-bottom:12px; letter-spacing:-1px; line-height:1.05; }
+.contact h2 span { color:var(--white); }
+.contact p { font-size:16px; color:rgba(42,26,32,0.65); margin-bottom:36px; }
+.contact-btns { display:flex; justify-content:center; gap:14px; flex-wrap:wrap; }
+.btn-wa, .btn-call { display:inline-flex; align-items:center; gap:10px; font-size:15px; font-weight:800; padding:16px 32px; border-radius:50px; border:2.5px solid var(--dark); text-decoration:none; box-shadow:4px 4px 0 var(--dark); transition:transform 0.15s, box-shadow 0.15s; }
+.btn-wa { background:#25D366; color:#fff; }
+.btn-call { background:var(--dark); color:var(--cream); }
+.btn-wa:hover, .btn-call:hover { transform:translateY(-3px); box-shadow:4px 7px 0 var(--dark); }
 
-    .nb-modal-overlay {
-      display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(0,0,0,0.8); z-index: 1000; align-items: center; justify-content: center;
-    }
-    .nb-modal-overlay.open { display: flex; }
-    .nb-modal {
-      background: #3a0f50; border: 1px solid rgba(255,255,255,0.12);
-      border-radius: 24px; padding: 40px 32px; max-width: 420px; width: 90%; text-align: center;
-      position: relative; animation: popIn 0.25s cubic-bezier(.22,1,.36,1);
-    }
-    @keyframes popIn { from { transform: scale(0.85); opacity: 0; } to { transform: scale(1); opacity: 1; } }
-    .nb-modal-top { height: 4px; border-radius: 24px 24px 0 0; background: linear-gradient(90deg, #844A8E, #f4d03f); margin: -40px -32px 30px; }
-    .nb-modal h2 { font-size: 22px; font-weight: 900; color: #fff; margin-bottom: 12px; }
-    .nb-modal p { font-size: 14px; color: rgba(255,255,255,0.55); line-height: 1.6; margin-bottom: 26px; }
-    .nb-modal-close { position: absolute; top: 16px; right: 20px; background: none; border: none; font-size: 18px; cursor: pointer; color: rgba(255,255,255,0.3); font-weight: 700; }
-    .nb-modal-close:hover { color: #f4d03f; }
-    .nb-mwa { display: block; background: #25D366; color: #fff; font-weight: 800; font-size: 15px; padding: 14px; border-radius: 50px; text-decoration: none; margin-bottom: 10px; transition: box-shadow 0.2s, transform 0.15s; }
-    .nb-mwa:hover { box-shadow: 0 0 24px rgba(37,211,102,0.4); transform: scale(1.02); }
-    .nb-mclose-btn { background: none; border: 1px solid rgba(255,255,255,0.15); color: rgba(255,255,255,0.4); padding: 12px; border-radius: 50px; cursor: pointer; font-size: 14px; width: 100%; font-weight: 600; }
-    .nb-mclose-btn:hover { border-color: rgba(255,255,255,0.3); color: rgba(255,255,255,0.7); }
-  </style>
+/* FOOTER */
+.footer { background:var(--dark); padding:28px 24px; text-align:center; border-top:3px solid var(--dark); }
+.footer p { font-size:12px; letter-spacing:2px; text-transform:uppercase; color:rgba(242,219,198,0.5); margin-bottom:6px; }
+.footer a { font-family:'Fraunces',serif; font-size:22px; font-weight:900; color:var(--cream); text-decoration:none; transition:color 0.2s; }
+.footer a:hover { color:var(--olive); }
+
+/* MODAL */
+.modal-overlay { display:none; position:fixed; inset:0; background:rgba(42,26,32,0.8); z-index:1000; align-items:center; justify-content:center; padding:20px; backdrop-filter:blur(4px); }
+.modal-overlay.open { display:flex; }
+.modal-box { background:var(--white); border:3px solid var(--dark); border-radius:28px; width:100%; max-width:540px; max-height:90vh; overflow-y:auto; animation:modalIn 0.3s cubic-bezier(.22,1,.36,1); position:relative; }
+@keyframes modalIn { from { transform:scale(0.88) translateY(30px); opacity:0; } to { transform:scale(1) translateY(0); opacity:1; } }
+.modal-close { position:absolute; top:16px; right:18px; background:var(--dark); color:var(--cream); border:none; width:36px; height:36px; border-radius:50%; font-size:18px; font-weight:700; cursor:pointer; z-index:10; display:flex; align-items:center; justify-content:center; transition:background 0.2s, transform 0.15s; }
+.modal-close:hover { background:var(--purple); transform:rotate(90deg); }
+.modal-gallery { width:100%; border-radius:24px 24px 0 0; min-height:240px; display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden; }
+.modal-gallery-inner { display:flex; width:100%; transition:transform 0.4s cubic-bezier(.22,1,.36,1); }
+.modal-gallery-slide { min-width:100%; height:260px; display:flex; align-items:center; justify-content:center; font-size:110px; position:relative; }
+.gallery-prev, .gallery-next { position:absolute; top:50%; transform:translateY(-50%); background:rgba(42,26,32,0.6); color:#fff; border:2px solid rgba(255,255,255,0.3); border-radius:50%; width:38px; height:38px; display:flex; align-items:center; justify-content:center; cursor:pointer; font-size:18px; font-weight:700; z-index:5; transition:background 0.2s; }
+.gallery-prev { left:12px; }
+.gallery-next { right:12px; }
+.gallery-prev:hover, .gallery-next:hover { background:var(--purple); }
+.gallery-dots { position:absolute; bottom:12px; left:50%; transform:translateX(-50%); display:flex; gap:6px; }
+.gallery-dot { width:7px; height:7px; border-radius:50%; background:rgba(255,255,255,0.4); border:none; cursor:pointer; transition:background 0.2s, transform 0.2s; }
+.gallery-dot.active { background:#fff; transform:scale(1.4); }
+.modal-content-area { padding:28px 30px 32px; }
+.modal-product-tag { display:inline-block; background:var(--cream); color:var(--purple); border:2px solid var(--purple); font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; padding:4px 14px; border-radius:50px; margin-bottom:14px; }
+.modal-title { font-family:'Fraunces',serif; font-size:30px; font-weight:900; color:var(--dark); margin-bottom:12px; line-height:1.1; }
+.modal-desc { font-size:15px; color:rgba(42,26,32,0.65); line-height:1.7; margin-bottom:28px; }
+.modal-actions { display:flex; gap:12px; flex-wrap:wrap; }
+.modal-btn-wa { flex:1; min-width:160px; display:inline-flex; align-items:center; justify-content:center; gap:8px; background:#25D366; color:#fff; font-size:14px; font-weight:800; padding:14px 20px; border-radius:50px; border:2.5px solid var(--dark); text-decoration:none; box-shadow:3px 3px 0 var(--dark); transition:transform 0.15s, box-shadow 0.15s; }
+.modal-btn-wa:hover { transform:translateY(-2px); box-shadow:3px 5px 0 var(--dark); }
+.modal-btn-back { flex:1; min-width:140px; display:inline-flex; align-items:center; justify-content:center; gap:8px; background:var(--white); color:var(--dark); font-size:14px; font-weight:700; padding:14px 20px; border-radius:50px; border:2.5px solid var(--dark); cursor:pointer; box-shadow:3px 3px 0 var(--dark); transition:transform 0.15s, box-shadow 0.15s, background 0.2s; }
+.modal-btn-back:hover { background:var(--cream); transform:translateY(-2px); box-shadow:3px 5px 0 var(--dark); }
+.modal-box::-webkit-scrollbar { width:6px; }
+.modal-box::-webkit-scrollbar-track { background:var(--cream); border-radius:10px; }
+.modal-box::-webkit-scrollbar-thumb { background:var(--purple); border-radius:10px; }
+
+@media (max-width:600px) {
+  .header h1 { font-size:36px; }
+  .section-title { font-size:34px; }
+  .promo h3 { font-size:28px; }
+  .contact h2 { font-size:34px; }
+  .header-sticker-ct { display:none; }
+  .sticker-band { gap:36px; }
+}
+</style>
 </head>
 <body>
 
-  <header class="nb-header">
-    <div class="nb-header-bg"></div>
-    <div class="nb-glow"></div>
-    <svg class="nb-deco-svg" viewBox="0 0 900 420" xmlns="http://www.w3.org/2000/svg">
-      <g opacity="0.55" transform="translate(60,30) rotate(-15)">
-        <circle cx="0" cy="0" r="32" fill="#c8860a"/>
-        <circle cx="0" cy="0" r="32" fill="none" stroke="#e8a020" stroke-width="2"/>
-        <rect x="-5" y="-8" width="10" height="16" rx="3" fill="#5a2a00" opacity="0.8"/>
-        <rect x="8" y="4" width="9" height="14" rx="3" fill="#5a2a00" opacity="0.8" transform="rotate(20)"/>
-        <rect x="-16" y="2" width="9" height="13" rx="3" fill="#5a2a00" opacity="0.8" transform="rotate(-10)"/>
-        <circle cx="6" cy="-14" r="3" fill="#5a2a00" opacity="0.7"/>
-        <circle cx="-10" cy="-12" r="2.5" fill="#5a2a00" opacity="0.7"/>
-      </g>
-      <g opacity="0.5" transform="translate(130,90) rotate(30)">
-        <rect x="-4" y="-10" width="8" height="20" rx="4" fill="#6b3a00"/>
-        <rect x="-4" y="-10" width="8" height="20" rx="4" fill="none" stroke="#a05a10" stroke-width="1"/>
-      </g>
-      <g opacity="0.4" transform="translate(30,130) rotate(-20)">
-        <rect x="-3" y="-9" width="6" height="18" rx="3" fill="#6b3a00"/>
-      </g>
-      <g opacity="0.35" transform="translate(170,50) rotate(50)">
-        <rect x="-3" y="-8" width="6" height="16" rx="3" fill="#8b5a10"/>
-      </g>
-      <circle cx="100" cy="160" r="4" fill="#f4d03f" opacity="0.35"/>
-      <circle cx="45" cy="200" r="3" fill="#d7a0e8" opacity="0.35"/>
-      <circle cx="155" cy="130" r="3" fill="#f4d03f" opacity="0.3"/>
-      <polygon points="30,260 34,248 38,260 50,260 41,268 44,280 34,272 24,280 27,268 18,260" fill="#f4d03f" opacity="0.3"/>
-      <g opacity="0.55" transform="translate(835,40) rotate(20)">
-        <circle cx="0" cy="0" r="34" fill="#c8860a"/>
-        <circle cx="0" cy="0" r="34" fill="none" stroke="#e8a020" stroke-width="2"/>
-        <rect x="-5" y="-9" width="10" height="18" rx="3" fill="#5a2a00" opacity="0.8"/>
-        <rect x="9" y="5" width="9" height="14" rx="3" fill="#5a2a00" opacity="0.8" transform="rotate(20)"/>
-        <rect x="-17" y="3" width="9" height="13" rx="3" fill="#5a2a00" opacity="0.8" transform="rotate(-10)"/>
-        <circle cx="7" cy="-15" r="3.5" fill="#5a2a00" opacity="0.7"/>
-        <circle cx="-11" cy="-13" r="3" fill="#5a2a00" opacity="0.7"/>
-      </g>
-      <g opacity="0.5" transform="translate(770,95) rotate(-25)">
-        <rect x="-4" y="-10" width="8" height="20" rx="4" fill="#6b3a00"/>
-        <rect x="-4" y="-10" width="8" height="20" rx="4" fill="none" stroke="#a05a10" stroke-width="1"/>
-      </g>
-      <g opacity="0.4" transform="translate(868,145) rotate(15)">
-        <rect x="-3" y="-9" width="6" height="18" rx="3" fill="#6b3a00"/>
-      </g>
-      <g opacity="0.35" transform="translate(730,55) rotate(-40)">
-        <rect x="-3" y="-8" width="6" height="16" rx="3" fill="#8b5a10"/>
-      </g>
-      <circle cx="800" cy="165" r="4" fill="#f4d03f" opacity="0.35"/>
-      <circle cx="860" cy="195" r="3" fill="#d7a0e8" opacity="0.35"/>
-      <circle cx="750" cy="120" r="3" fill="#f4d03f" opacity="0.3"/>
-      <polygon points="870,255 874,243 878,255 890,255 881,263 884,275 874,267 864,275 867,263 858,255" fill="#f4d03f" opacity="0.3"/>
-      <g opacity="0.35" transform="translate(90,310) rotate(10)">
-        <circle cx="0" cy="0" r="20" fill="#c8860a"/>
-        <rect x="-3" y="-6" width="6" height="12" rx="3" fill="#5a2a00" opacity="0.8"/>
-        <rect x="6" y="2" width="6" height="10" rx="3" fill="#5a2a00" opacity="0.8" transform="rotate(15)"/>
-        <circle cx="-7" cy="-8" r="2" fill="#5a2a00" opacity="0.7"/>
-      </g>
-      <g opacity="0.35" transform="translate(820,320) rotate(-12)">
-        <circle cx="0" cy="0" r="22" fill="#c8860a"/>
-        <rect x="-3" y="-6" width="6" height="12" rx="3" fill="#5a2a00" opacity="0.8"/>
-        <rect x="6" y="2" width="6" height="10" rx="3" fill="#5a2a00" opacity="0.8" transform="rotate(15)"/>
-        <circle cx="-7" cy="-8" r="2" fill="#5a2a00" opacity="0.7"/>
-      </g>
-      <circle cx="180" cy="350" r="3.5" fill="#f4d03f" opacity="0.25"/>
-      <circle cx="720" cy="360" r="3" fill="#f4d03f" opacity="0.25"/>
-      <circle cx="50" cy="380" r="2.5" fill="#d7a0e8" opacity="0.2"/>
-      <circle cx="850" cy="370" r="2.5" fill="#d7a0e8" opacity="0.2"/>
-      <g opacity="0.3" transform="translate(150,380) rotate(60)">
-        <rect x="-2.5" y="-7" width="5" height="14" rx="2.5" fill="#8b5a10"/>
-      </g>
-      <g opacity="0.3" transform="translate(760,390) rotate(-50)">
-        <rect x="-2.5" y="-7" width="5" height="14" rx="2.5" fill="#8b5a10"/>
-      </g>
+<!-- HEADER -->
+<header class="header">
+  <div class="header-pattern"></div>
+
+  <!-- Sticker Hey! flotante -->
+  <div class="header-sticker-hey">
+    <svg width="110" height="80" viewBox="0 0 110 80" xmlns="http://www.w3.org/2000/svg">
+      <rect x="4" y="4" width="102" height="72" rx="24" fill="#C2AB42" stroke="#2a1a20" stroke-width="3"/>
+      <text x="55" y="52" text-anchor="middle" font-family="Georgia,serif" font-weight="900" font-size="34" fill="#885784">Hey!</text>
     </svg>
-    <div class="nb-header-content">
-      <img src="logo.png" class="nb-logo" alt="Niafas Bites Logo">
-      <h1>Mini Bites</h1>
-      <p>Antojos irresistibles para todos los gustos</p>
-      <div class="nb-pill">Hecho con amor artesanal</div>
-    </div>
-  </header>
-
-  <div class="nb-strip">
-    <span class="nb-strip-inner">Mini Cookies &nbsp;·&nbsp; Pan de Bono &nbsp;·&nbsp; Polvorosas &nbsp;·&nbsp; Trufas de Maní y Chocolate &nbsp;·&nbsp; Barras de Cookies &nbsp;·&nbsp; Pedidos Especiales &nbsp;·&nbsp; Mini Cookies &nbsp;·&nbsp; Pan de Bono &nbsp;·&nbsp; Polvorosas &nbsp;·&nbsp; Trufas de Maní y Chocolate &nbsp;·&nbsp; Barras de Cookies &nbsp;·&nbsp; Pedidos Especiales &nbsp;·&nbsp;</span>
   </div>
 
-  <section class="nb-products">
-    <div class="nb-section-label">Lo que hacemos</div>
-    <h2>Nuestros Productos</h2>
-    <p class="nb-products-sub">Haz clic en cualquier producto para ordenar</p>
-    <div class="nb-grid" id="nbGrid"></div>
-  </section>
+  <!-- Sticker Cookies Time flotante -->
+  <div class="header-sticker-ct">
+    <svg width="160" height="90" viewBox="0 0 160 90" xmlns="http://www.w3.org/2000/svg">
+      <rect x="4" y="4" width="152" height="82" rx="20" fill="#F2DBC6" stroke="#2a1a20" stroke-width="3"/>
+      <text x="78" y="36" text-anchor="middle" font-family="Georgia,serif" font-weight="900" font-size="20" fill="#DD8D6E">COOKIES</text>
+      <rect x="14" y="44" width="132" height="32" rx="8" fill="#DD8D6E" stroke="#2a1a20" stroke-width="2.5"/>
+      <text x="78" y="66" text-anchor="middle" font-family="Georgia,serif" font-weight="900" font-size="20" fill="#F2DBC6">TIME</text>
+    </svg>
+  </div>
 
-  <section class="nb-promo">
-    <div class="nb-promo-inner">
-      <div class="nb-promo-badge">Servicio especial</div>
-      <h3>Pedidos personalizados disponibles</h3>
-      <p>Cantidades especiales para eventos, cumpleaños y regalos corporativos. Háblanos por WhatsApp y te cotizamos.</p>
+  <!-- Decoraciones de fondo -->
+  <svg class="header-deco" viewBox="0 0 1000 520" xmlns="http://www.w3.org/2000/svg">
+    <g transform="translate(80,80) rotate(-20)" opacity="0.38">
+      <circle r="44" fill="#C2AB42" stroke="#2a1a20" stroke-width="2"/>
+      <rect x="-6" y="-10" width="12" height="20" rx="5" fill="#5a2a00" opacity="0.7"/>
+      <rect x="10" y="4" width="10" height="16" rx="5" fill="#5a2a00" opacity="0.7" transform="rotate(20)"/>
+      <rect x="-20" y="2" width="10" height="15" rx="5" fill="#5a2a00" opacity="0.7" transform="rotate(-12)"/>
+      <circle cx="8" cy="-18" r="4" fill="#5a2a00" opacity="0.6"/>
+      <circle cx="-14" cy="-15" r="3" fill="#5a2a00" opacity="0.6"/>
+    </g>
+    <g transform="translate(920,90) rotate(15)" opacity="0.38">
+      <circle r="48" fill="#DD8D6E" stroke="#2a1a20" stroke-width="2"/>
+      <rect x="-6" y="-12" width="12" height="22" rx="5" fill="#5a2a00" opacity="0.7"/>
+      <rect x="12" y="5" width="10" height="18" rx="5" fill="#5a2a00" opacity="0.7" transform="rotate(18)"/>
+      <rect x="-22" y="3" width="10" height="16" rx="5" fill="#5a2a00" opacity="0.7" transform="rotate(-10)"/>
+      <circle cx="9" cy="-20" r="4" fill="#5a2a00" opacity="0.6"/>
+      <circle cx="-16" cy="-16" r="3.5" fill="#5a2a00" opacity="0.6"/>
+    </g>
+    <g transform="translate(40,300) rotate(8)" opacity="0.28">
+      <circle r="28" fill="#F2DBC6" stroke="#2a1a20" stroke-width="1.5"/>
+      <rect x="-4" y="-7" width="8" height="14" rx="4" fill="#5a2a00" opacity="0.7"/>
+      <rect x="6" y="3" width="7" height="12" rx="4" fill="#5a2a00" opacity="0.7" transform="rotate(15)"/>
+    </g>
+    <g transform="translate(965,340) rotate(-14)" opacity="0.28">
+      <circle r="30" fill="#C2AB42" stroke="#2a1a20" stroke-width="1.5"/>
+      <rect x="-4" y="-8" width="8" height="16" rx="4" fill="#5a2a00" opacity="0.7"/>
+      <rect x="7" y="3" width="7" height="12" rx="4" fill="#5a2a00" opacity="0.7" transform="rotate(15)"/>
+    </g>
+    <polygon points="160,420 165,405 170,420 185,420 174,430 178,445 165,435 152,445 156,430 145,420" fill="#C2AB42" opacity="0.3"/>
+    <polygon points="830,55 834,43 838,55 850,55 841,63 844,75 834,67 824,75 827,63 818,55" fill="#F2DBC6" opacity="0.3"/>
+    <polygon points="900,430 903,420 906,430 916,430 908,436 911,446 903,440 895,446 898,436 890,430" fill="#DD8D6E" opacity="0.28"/>
+    <g transform="translate(130,200) rotate(35)" opacity="0.32"><rect x="-4" y="-12" width="8" height="24" rx="4" fill="#5a2a00"/></g>
+    <g transform="translate(55,160) rotate(-15)" opacity="0.28"><rect x="-3" y="-9" width="6" height="18" rx="3" fill="#5a2a00"/></g>
+    <g transform="translate(870,230) rotate(25)" opacity="0.32"><rect x="-4" y="-12" width="8" height="24" rx="4" fill="#5a2a00"/></g>
+    <g transform="translate(975,185) rotate(-30)" opacity="0.28"><rect x="-3" y="-9" width="6" height="18" rx="3" fill="#5a2a00"/></g>
+    <rect x="98" y="380" width="6" height="18" rx="3" fill="#F2DBC6" opacity="0.3" transform="rotate(40 101 389)"/>
+    <rect x="878" y="375" width="6" height="18" rx="3" fill="#C2AB42" opacity="0.3" transform="rotate(-30 881 384)"/>
+    <rect x="198" y="55" width="5" height="14" rx="2.5" fill="#DD8D6E" opacity="0.28" transform="rotate(20 200 62)"/>
+    <rect x="798" y="405" width="5" height="14" rx="2.5" fill="#F2DBC6" opacity="0.28" transform="rotate(-20 800 412)"/>
+  </svg>
+
+  <div class="header-content">
+    <img src="logo.png" class="logo-img" alt="The Niafa's Bites Logo">
+    <h1>Mini <span>Bites</span></h1>
+    <p style="font-size:14px;color:rgba(242,219,198,0.7);letter-spacing:1px">Antojos irresistibles para todos los gustos</p>
+    <div class="header-pill" style="margin-top:20px">✦ Hecho con amor artesanal ✦</div>
+  </div>
+</header>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <span class="marquee-inner">
+    Mini Cookies <span class="marquee-dot">✦</span> Pan de Bono <span class="marquee-dot">✦</span> Polvorosas <span class="marquee-dot">✦</span> Trufas de Maní <span class="marquee-dot">✦</span> Bolitas de Coco <span class="marquee-dot">✦</span> Pedidos Especiales <span class="marquee-dot">✦</span> Mini Cookies <span class="marquee-dot">✦</span> Pan de Bono <span class="marquee-dot">✦</span> Polvorosas <span class="marquee-dot">✦</span> Trufas de Maní <span class="marquee-dot">✦</span> Bolitas de Coco <span class="marquee-dot">✦</span> Pedidos Especiales <span class="marquee-dot">✦</span>
+  </span>
+</div>
+
+<!-- PRODUCTS -->
+<section class="products">
+  <div class="section-eyebrow">Nuestros productos</div>
+  <h2 class="section-title">Lo que <span>hacemos</span></h2>
+  <p class="section-sub">Haz clic en cualquier producto para ver más y ordenar</p>
+  <div class="products-grid" id="productsGrid"></div>
+</section>
+
+<!-- STICKER BAND -->
+<div class="sticker-band">
+  <div class="sticker-item">
+    <svg style="display:block;margin:0 auto 12px" width="140" height="100" viewBox="0 0 140 100" xmlns="http://www.w3.org/2000/svg">
+      <rect x="5" y="5" width="130" height="90" rx="30" fill="#C2AB42" stroke="#2a1a20" stroke-width="3.5"/>
+      <text x="70" y="65" text-anchor="middle" font-family="Georgia,serif" font-weight="900" font-size="46" fill="#885784">Hey!</text>
+    </svg>
+    <div class="sticker-title">¡Hola!</div>
+    <div class="sticker-sub">Estamos listos para preparar tus antojos favoritos</div>
+  </div>
+  <div class="sticker-item">
+    <svg style="display:block;margin:0 auto 12px" width="200" height="110" viewBox="0 0 200 110" xmlns="http://www.w3.org/2000/svg">
+      <rect x="5" y="5" width="190" height="100" rx="24" fill="#F2DBC6" stroke="#2a1a20" stroke-width="3.5"/>
+      <text x="100" y="46" text-anchor="middle" font-family="Georgia,serif" font-weight="900" font-size="26" fill="#DD8D6E">COOKIES</text>
+      <rect x="16" y="56" width="168" height="38" rx="10" fill="#DD8D6E" stroke="#2a1a20" stroke-width="2.5"/>
+      <text x="100" y="82" text-anchor="middle" font-family="Georgia,serif" font-weight="900" font-size="26" fill="#F2DBC6">TIME</text>
+    </svg>
+    <div class="sticker-title">Pedidos especiales</div>
+    <div class="sticker-sub">Eventos, cumpleaños y regalos corporativos</div>
+  </div>
+  <div class="sticker-item">
+    <svg style="display:block;margin:0 auto 12px" width="110" height="110" viewBox="0 0 110 110" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="55" cy="55" r="50" fill="#885784" stroke="#2a1a20" stroke-width="3.5"/>
+      <circle cx="55" cy="55" r="38" fill="none" stroke="#F2DBC6" stroke-width="1.5" stroke-dasharray="4 4"/>
+      <text x="55" y="48" text-anchor="middle" font-family="Georgia,serif" font-weight="900" font-size="12" fill="#F2DBC6">ARTESANAL</text>
+      <text x="55" y="65" text-anchor="middle" font-family="Georgia,serif" font-weight="900" font-size="12" fill="#C2AB42">CON AMOR</text>
+      <text x="55" y="80" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="rgba(242,219,198,0.7)">✦ desde casa ✦</text>
+    </svg>
+    <div class="sticker-title">100% casero</div>
+    <div class="sticker-sub">Ingredientes de calidad seleccionados con cariño</div>
+  </div>
+</div>
+
+<!-- PROMO -->
+<section class="promo">
+  <div class="promo-inner">
+    <div class="promo-badge">✦ Servicio especial ✦</div>
+    <h3>Pedidos para<br><span>eventos y regalos</span></h3>
+    <p>Cantidades especiales para cumpleaños, reuniones y regalos corporativos. Cotización sin compromiso.</p>
+    <a href="https://wa.me/584144332483?text=Hola!%20Quiero%20hacer%20un%20pedido%20especial%20de%20The%20Niafa's%20Bites." target="_blank" class="promo-btn">
+      Cotizar por WhatsApp
+    </a>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews">
+  <div class="section-eyebrow">Reseñas</div>
+  <h2 class="section-title">Clientes <span>felices</span></h2>
+  <div class="reviews-grid">
+    <div class="review-card">
+      <div class="review-quote">"</div>
+      <div class="review-stars">★★★★★</div>
+      <div class="review-text">Las Mini Cookies son una adicción. Las pedí para una reunión y desaparecieron en minutos. ¡Todo el mundo preguntó dónde comprarlas!</div>
+      <div class="review-name">— María G.</div>
     </div>
-  </section>
-
-  <section class="nb-reviews">
-    <div class="nb-section-label">Reseñas</div>
-    <h2>Lo que dicen nuestros clientes</h2>
-    <p class="nb-reviews-sub">Más de 100 clientes felices</p>
-    <div class="nb-review-grid">
-      <div class="nb-rcard">
-        <div class="nb-stars">★★★★★</div>
-        <div class="nb-rtext">"Las Mini Cookies son una adicción. Las pedí para una reunión y desaparecieron en minutos!"</div>
-        <div class="nb-rname">María G.</div>
-      </div>
-      <div class="nb-rcard">
-        <div class="nb-stars">★★★★★</div>
-        <div class="nb-rtext">"El Pan de Bono sabe igualito al de mi abuela. ¡Qué recuerdos! 100% recomendado."</div>
-        <div class="nb-rname">Carlos M.</div>
-      </div>
-      <div class="nb-rcard">
-        <div class="nb-stars">★★★★★</div>
-        <div class="nb-rtext">"Las Trufas de Maní y Chocolate son el regalo perfecto. Todos quedan encantados."</div>
-        <div class="nb-rname">Valeria R.</div>
-      </div>
+    <div class="review-card">
+      <div class="review-quote">"</div>
+      <div class="review-stars">★★★★★</div>
+      <div class="review-text">El Pan de Bono sabe igualito al de mi abuela. ¡Qué recuerdos tan hermosos! 100% recomendado, siempre fresco y delicioso.</div>
+      <div class="review-name">— Carlos M.</div>
     </div>
-  </section>
+    <div class="review-card">
+      <div class="review-quote">"</div>
+      <div class="review-stars">★★★★★</div>
+      <div class="review-text">Las Trufas de Maní son el regalo perfecto. Todos quedan encantados y siempre me piden que compre más. ¡Las mejores!</div>
+      <div class="review-name">— Valeria R.</div>
+    </div>
+  </div>
+</section>
 
-  <section class="nb-contact">
-    <div class="nb-contact-glow"></div>
-    <div class="nb-section-label">Hablemos</div>
-    <h2>Ordenar es fácil</h2>
+<!-- CONTACT -->
+<section class="contact">
+  <div class="contact-inner">
+    <div class="section-eyebrow" style="background:rgba(42,26,32,0.1);color:var(--dark)">Contáctanos</div>
+    <h2>Ordenar es<br><span>muy fácil</span></h2>
     <p>Escríbenos y te atendemos al instante</p>
-    <div class="nb-btn-row">
-      <a href="tel:+584144332483" class="nb-btn nb-btn-call">Llámanos</a>
-      <a href="https://wa.me/584144332483" target="_blank" class="nb-btn nb-btn-wa">WhatsApp</a>
-    </div>
-  </section>
-
-  <footer class="nb-footer">
-    <p>Síguenos en Instagram</p>
-    <a href="https://instagram.com/niafasbites" target="_blank">@niafasbites</a>
-  </footer>
-
-  <div class="nb-modal-overlay" id="nbModalBg">
-    <div class="nb-modal">
-      <div class="nb-modal-top"></div>
-      <button class="nb-modal-close" onclick="closeNbModal()">&#x2715;</button>
-      <h2 id="nbModalTitle"></h2>
-      <p id="nbModalDesc"></p>
-      <a id="nbModalWa" target="_blank" class="nb-mwa">Ordenar por WhatsApp</a>
-      <button onclick="closeNbModal()" class="nb-mclose-btn">Cerrar</button>
+    <div class="contact-btns">
+      <a href="tel:+584144332483" class="btn-call">📞 Llámanos</a>
+      <a href="https://wa.me/584144332483" target="_blank" class="btn-wa">WhatsApp</a>
     </div>
   </div>
+</section>
 
-  <script>
-    const products = [
-      { name: 'Mini Cookies', desc: 'Mini galletas caseras suaves y llenas de sabor. ¡Imposible comer solo una!' },
-      { name: 'Pan de Bono', desc: 'Pan de bono tradicional colombiano con queso, suave por dentro y ligeramente crujiente por fuera.' },
-      { name: 'Polvorosas', desc: 'Deliciosas galletas de mantequilla que se derriten en tu boca. Una experiencia única.' },
-      { name: 'Trufas de Maní y Chocolate', desc: 'Trufas de chocolate con delicioso sabor a maní. El regalo perfecto para cualquier ocasión.' },
-      { name: 'Barras de Cookies', desc: 'Barras de galleta con intenso sabor a chocolate y su irresistible topping de chocolate.' },
-    ];
-    const arrowSVG = `<svg viewBox="0 0 14 14" xmlns="http://www.w3.org/2000/svg"><polyline points="2,12 12,2" stroke-width="2" stroke-linecap="round" fill="none"/><polyline points="4,2 12,2 12,10" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>`;
-    const grid = document.getElementById('nbGrid');
-    products.forEach((p, i) => {
-      const card = document.createElement('div');
-      card.className = 'nb-card';
-      card.innerHTML = `<div class="nb-card-num">0${i+1}</div><h3>${p.name}</h3><p>${p.desc}</p><div class="nb-card-arrow">${arrowSVG}</div>`;
-      card.onclick = () => openNbModal(p.name, p.desc);
-      grid.appendChild(card);
-    });
-    function openNbModal(name, desc) {
-      document.getElementById('nbModalTitle').innerText = name;
-      document.getElementById('nbModalDesc').innerText = desc;
-      document.getElementById('nbModalWa').href = 'https://wa.me/584144332483?text=' + encodeURIComponent('Hola! Quiero ordenar ' + name + ' de Niafas Bites.');
-      document.getElementById('nbModalBg').className = 'nb-modal-overlay open';
-    }
-    function closeNbModal() {
-      document.getElementById('nbModalBg').className = 'nb-modal-overlay';
-    }
-  </script>
+<!-- FOOTER -->
+<footer class="footer">
+  <p>Síguenos en Instagram</p>
+  <a href="https://instagram.com/niafasbites" target="_blank">@niafasbites</a>
+</footer>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div class="modal-gallery">
+      <div class="modal-gallery-inner" id="galleryInner"></div>
+      <button class="gallery-prev" onclick="slideGallery(-1)">‹</button>
+      <button class="gallery-next" onclick="slideGallery(1)">›</button>
+      <div class="gallery-dots" id="galleryDots"></div>
+    </div>
+    <div class="modal-content-area">
+      <div class="modal-product-tag">✦ The Niafa's Bites</div>
+      <h2 class="modal-title" id="modalTitle"></h2>
+      <p class="modal-desc" id="modalDesc"></p>
+      <div class="modal-actions">
+        <a id="modalWaBtn" href="#" target="_blank" class="modal-btn-wa">Ordenar por WhatsApp</a>
+        <button class="modal-btn-back" onclick="closeModal()">← Ver otros productos</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const products = [
+  { name:'Mini Cookies', desc:'Mini galletas caseras suaves y llenas de sabor. Hechas con los mejores ingredientes, con chips de chocolate en cada mordida. ¡Imposible comer solo una!', color:'card-c1', emoji:'🍪', slides:['#885784','#9a6a96','#7a4a74'] },
+  { name:'Pan de Bono', desc:'Pan de bono tradicional colombiano con queso, suave por dentro y ligeramente crujiente por fuera. Perfecto para el desayuno o la merienda.', color:'card-c2', emoji:'🧀', slides:['#DD8D6E','#e8a080','#c97a5a'] },
+  { name:'Polvorosas', desc:'Deliciosas galletas de mantequilla que se derriten en tu boca con una textura suave y única. Un clásico que nunca falla.', color:'card-c3', emoji:'✨', slides:['#C2AB42','#d4bc4e','#a89438'] },
+  { name:'Trufas de Maní y Chocolate', desc:'Trufas de chocolate con delicioso sabor a maní. Cubiertas en chocolate fino con un relleno cremoso irresistible. El regalo perfecto para cualquier ocasión.', color:'card-c4', emoji:'🍫', slides:['#885784','#5a3a58','#7a4a74'] },
+  { name:'Bolitas de Coco', desc:'Deliciosas bolitas recubiertas con coco rallado tostado. Un bocado tropical, dulce y refrescante que te transporta al paraíso con cada mordida.', color:'card-c5', emoji:'🥥', slides:['#DD8D6E','#F2DBC6','#C2AB42'] },
+];
+
+let currentSlide = 0, totalSlides = 0;
+
+const grid = document.getElementById('productsGrid');
+products.forEach((p, i) => {
+  const card = document.createElement('div');
+  card.className = `product-card ${p.color}`;
+  card.innerHTML = `
+    <div class="card-top">
+      <svg style="position:absolute;inset:0;width:100%;height:100%" viewBox="0 0 300 130">
+        <circle cx="30" cy="30" r="40" fill="rgba(42,26,32,0.04)"/>
+        <circle cx="270" cy="100" r="50" fill="rgba(42,26,32,0.04)"/>
+      </svg>
+      <span style="font-size:58px;position:relative;z-index:1;filter:drop-shadow(0 4px 8px rgba(0,0,0,0.15))">${p.emoji}</span>
+    </div>
+    <div class="card-body">
+      <div class="card-num">0${i+1}</div>
+      <div class="card-name">${p.name}</div>
+      <div class="card-desc">${p.desc.substring(0,82)}…</div>
+      <div class="card-cta">Ver producto <span class="card-cta-arrow">→</span></div>
+    </div>`;
+  card.onclick = () => openModal(p);
+  grid.appendChild(card);
+});
+
+function openModal(product) {
+  currentSlide = 0;
+  totalSlides = product.slides.length;
+  document.getElementById('modalTitle').innerText = product.name;
+  document.getElementById('modalDesc').innerText = product.desc;
+  document.getElementById('modalWaBtn').href = 'https://wa.me/584144332483?text=' + encodeURIComponent('Hola! Quiero ordenar ' + product.name + ' de The Niafa\'s Bites.');
+  const inner = document.getElementById('galleryInner');
+  inner.innerHTML = '';
+  product.slides.forEach((color, idx) => {
+    const slide = document.createElement('div');
+    slide.className = 'modal-gallery-slide';
+    slide.style.background = color;
+    slide.innerHTML = `
+      <div style="display:flex;flex-direction:column;align-items:center;gap:10px;opacity:0.5">
+        <span style="font-size:80px">${product.emoji}</span>
+        <div style="background:rgba(0,0,0,0.2);color:#fff;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:4px 14px;border-radius:20px">Foto ${idx+1} de ${product.slides.length}</div>
+      </div>`;
+    inner.appendChild(slide);
+  });
+  const dotsContainer = document.getElementById('galleryDots');
+  dotsContainer.innerHTML = '';
+  product.slides.forEach((_, idx) => {
+    const dot = document.createElement('button');
+    dot.className = 'gallery-dot' + (idx === 0 ? ' active' : '');
+    dot.onclick = () => { currentSlide = idx; updateGallery(); };
+    dotsContainer.appendChild(dot);
+  });
+  updateGallery();
+  document.getElementById('modalOverlay').className = 'modal-overlay open';
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+  document.getElementById('modalOverlay').className = 'modal-overlay';
+  document.body.style.overflow = '';
+}
+
+function slideGallery(dir) {
+  currentSlide = (currentSlide + dir + totalSlides) % totalSlides;
+  updateGallery();
+}
+
+function updateGallery() {
+  document.getElementById('galleryInner').style.transform = `translateX(-${currentSlide * 100}%)`;
+  document.querySelectorAll('.gallery-dot').forEach((d, i) => {
+    d.className = 'gallery-dot' + (i === currentSlide ? ' active' : '');
+  });
+}
+
+document.getElementById('modalOverlay').addEventListener('click', function(e) { if (e.target === this) closeModal(); });
+document.addEventListener('keydown', e => {
+  if (!document.getElementById('modalOverlay').classList.contains('open')) return;
+  if (e.key === 'ArrowLeft') slideGallery(-1);
+  if (e.key === 'ArrowRight') slideGallery(1);
+  if (e.key === 'Escape') closeModal();
+});
+</script>
 </body>
 </html>
