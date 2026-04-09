@@ -1,263 +1,283 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Niafas Bites</title>
-
   <style>
-    /* =======================
-       GENERAL STYLES
-    ======================= */
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: #fff8f0;
-      color: #333;
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', sans-serif; background: #2d0a3e; color: #fff; overflow-x: hidden; }
+
+    /* HEADER */
+    .nb-header {
+      background: #2d0a3e;
+      padding: 0; text-align: center; position: relative;
+      overflow: hidden; min-height: 420px;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+    }
+    .nb-header-bg {
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 40%, #7a3090 0%, #4a1060 55%, #2d0a3e 100%);
+    }
+    .nb-sprinkles-l {
+      position: absolute; top: 0; left: 0; width: 200px; height: 100%;
+      background-image: url('chocolate-sprinkles.png');
+      background-repeat: no-repeat; background-position: left top; background-size: contain; opacity: 0.7;
+    }
+    .nb-sprinkles-r {
+      position: absolute; top: 0; right: 0; width: 200px; height: 100%;
+      background-image: url('chocolate-sprinkles.png');
+      background-repeat: no-repeat; background-position: right top; background-size: contain;
+      opacity: 0.7; transform: scaleX(-1);
+    }
+    .nb-glow {
+      position: absolute; top: 30%; left: 50%; transform: translateX(-50%);
+      width: 400px; height: 200px;
+      background: radial-gradient(ellipse, rgba(244,208,63,0.2) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .nb-header-content { position: relative; z-index: 2; padding: 40px 20px; }
+    .nb-logo { width: 190px; filter: drop-shadow(0 0 24px rgba(244,208,63,0.35)); margin-bottom: 18px; }
+    .nb-header h1 {
+      font-size: 48px; font-weight: 900; letter-spacing: -1px;
+      background: linear-gradient(90deg, #f4d03f 0%, #ffffff 50%, #d7a0e8 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      margin-bottom: 6px; line-height: 1.1;
+    }
+    .nb-header p { font-size: 13px; color: rgba(255,255,255,0.6); letter-spacing: 1px; text-transform: uppercase; }
+    .nb-pill {
+      display: inline-block; border: 1.5px solid rgba(244,208,63,0.5); color: #f4d03f;
+      font-size: 12px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
+      padding: 7px 22px; border-radius: 50px; margin-top: 18px; animation: pillpulse 2.5s infinite;
+    }
+    @keyframes pillpulse {
+      0%,100% { box-shadow: 0 0 0 0 rgba(244,208,63,0.3); }
+      50% { box-shadow: 0 0 0 8px rgba(244,208,63,0); }
     }
 
-    button {
-      margin-top: 20px;
-      background: #25D366;
-      color: white;
-      border: none;
-      padding: 12px 25px;
-      font-size: 16px;
-      border-radius: 30px;
-      cursor: pointer;
+    /* MARQUEE */
+    .nb-strip { background: #f4d03f; padding: 10px 0; overflow: hidden; white-space: nowrap; }
+    .nb-strip-inner {
+      display: inline-block; animation: marquee 18s linear infinite;
+      font-size: 13px; font-weight: 800; color: #2d0a3e; letter-spacing: 1px; text-transform: uppercase;
     }
+    @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
-    /* =======================
-       HEADER
-    ======================= */
-    header {
-      background-color: #844A8E;
-      background-image: url('chocolate-sprinkles.png'), url('chocolate-sprinkles.png');
-      background-position: left top, right top;
-      background-repeat: no-repeat, no-repeat;
-      padding: 40px;
-      text-align: center;
+    /* PRODUCTS */
+    .nb-products { background: #3a0f50; padding: 70px 24px; text-align: center; }
+    .nb-section-label { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: #f4d03f; font-weight: 700; margin-bottom: 10px; }
+    .nb-products h2 { font-size: 36px; font-weight: 900; color: #fff; margin-bottom: 6px; letter-spacing: -0.5px; }
+    .nb-products-sub { font-size: 14px; color: rgba(255,255,255,0.45); margin-bottom: 48px; }
+    .nb-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 16px; max-width: 980px; margin: 0 auto;
     }
+    .nb-card {
+      background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 20px; padding: 32px 20px 24px; cursor: pointer;
+      transition: transform 0.28s cubic-bezier(.22,1,.36,1), border-color 0.2s, background 0.2s;
+      position: relative; overflow: hidden; text-align: left;
+    }
+    .nb-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, #844A8E, #f4d03f, #844A8E); background-size: 200%;
+      animation: shimmer 3s linear infinite; border-radius: 20px 20px 0 0;
+    }
+    @keyframes shimmer { 0% { background-position: 0%; } 100% { background-position: 200%; } }
+    .nb-card:hover { transform: translateY(-12px); border-color: rgba(244,208,63,0.4); background: rgba(132,74,142,0.25); }
+    .nb-card-num { font-size: 11px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: rgba(244,208,63,0.5); margin-bottom: 14px; }
+    .nb-card h3 { font-size: 18px; font-weight: 800; color: #fff; margin-bottom: 10px; line-height: 1.2; }
+    .nb-card p { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.6; }
+    .nb-card-arrow {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 36px; height: 36px; border-radius: 50%; border: 1px solid rgba(244,208,63,0.4);
+      margin-top: 20px; transition: background 0.2s, transform 0.2s;
+    }
+    .nb-card:hover .nb-card-arrow { background: #f4d03f; transform: rotate(45deg); }
+    .nb-card-arrow svg { width: 14px; height: 14px; stroke: #f4d03f; fill: none; transition: stroke 0.2s; }
+    .nb-card:hover .nb-card-arrow svg { stroke: #2d0a3e; }
 
-    .logo {
-      width: 280px;
-    }
+    /* PROMO */
+    .nb-promo { background: #844A8E; padding: 60px 24px; text-align: center; position: relative; overflow: hidden; }
+    .nb-promo::before { content: ''; position: absolute; top: -80px; right: -80px; width: 300px; height: 300px; background: rgba(244,208,63,0.08); border-radius: 50%; }
+    .nb-promo::after { content: ''; position: absolute; bottom: -100px; left: -60px; width: 260px; height: 260px; background: rgba(0,0,0,0.1); border-radius: 50%; }
+    .nb-promo-inner { position: relative; z-index: 1; }
+    .nb-promo-badge { display: inline-block; background: #f4d03f; color: #2d0a3e; font-size: 11px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; padding: 6px 18px; border-radius: 50px; margin-bottom: 18px; }
+    .nb-promo h3 { font-size: 30px; font-weight: 900; color: #fff2cc; margin-bottom: 10px; letter-spacing: -0.5px; }
+    .nb-promo p { font-size: 15px; color: rgba(255,242,204,0.7); max-width: 500px; margin: 0 auto; }
 
-    header h1 {
-      font-size: 42px;
-      margin: 10px 0;
-      color: #fff2cc;
-    }
+    /* REVIEWS */
+    .nb-reviews { background: #3a0f50; padding: 70px 24px; text-align: center; }
+    .nb-reviews h2 { font-size: 32px; font-weight: 900; color: #fff; margin-bottom: 6px; letter-spacing: -0.5px; }
+    .nb-reviews-sub { font-size: 14px; color: rgba(255,255,255,0.4); margin-bottom: 44px; }
+    .nb-review-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; max-width: 860px; margin: 0 auto; }
+    .nb-rcard { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.1); border-radius: 18px; padding: 24px; text-align: left; transition: border-color 0.2s; }
+    .nb-rcard:hover { border-color: rgba(244,208,63,0.3); }
+    .nb-stars { color: #f4d03f; font-size: 14px; letter-spacing: 3px; margin-bottom: 12px; }
+    .nb-rtext { font-size: 14px; color: rgba(255,255,255,0.6); line-height: 1.65; margin-bottom: 16px; font-style: italic; }
+    .nb-rname { font-size: 12px; font-weight: 800; color: #d7a0e8; letter-spacing: 1px; text-transform: uppercase; }
 
-    header p {
-      font-size: 18px;
-      color: #fff2cc;
-    }
+    /* CONTACT */
+    .nb-contact { background: #2d0a3e; padding: 80px 24px; text-align: center; position: relative; overflow: hidden; }
+    .nb-contact-glow { position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 600px; height: 300px; background: radial-gradient(ellipse, rgba(132,74,142,0.35) 0%, transparent 70%); pointer-events: none; }
+    .nb-contact h2 { font-size: 40px; font-weight: 900; color: #fff; margin-bottom: 12px; letter-spacing: -1px; position: relative; z-index: 1; }
+    .nb-contact p { font-size: 15px; color: rgba(255,255,255,0.45); margin-bottom: 36px; position: relative; z-index: 1; }
+    .nb-btn-row { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; position: relative; z-index: 1; }
+    .nb-btn { padding: 16px 36px; font-size: 15px; font-weight: 800; border-radius: 50px; border: none; cursor: pointer; transition: transform 0.15s, box-shadow 0.2s; text-decoration: none; display: inline-block; letter-spacing: 0.5px; }
+    .nb-btn:hover { transform: scale(1.06); }
+    .nb-btn-wa { background: #25D366; color: #fff; }
+    .nb-btn-wa:hover { box-shadow: 0 0 28px rgba(37,211,102,0.4); }
+    .nb-btn-call { background: rgba(255,255,255,0.1); color: #fff; border: 1px solid rgba(255,255,255,0.2); }
+    .nb-btn-call:hover { background: rgba(255,255,255,0.16); }
 
-    /* =======================
-       PRODUCTS SECTION
-    ======================= */
-    .products {
-      padding: 60px;
-      text-align: center;
-    }
+    /* FOOTER */
+    .nb-footer { background: #f4d03f; padding: 22px 20px; text-align: center; }
+    .nb-footer p { font-size: 13px; font-weight: 700; color: #2d0a3e; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 1px; }
+    .nb-footer a { font-size: 18px; font-weight: 900; color: #2d0a3e; text-decoration: none; letter-spacing: 0.5px; }
+    .nb-footer a:hover { text-decoration: underline; }
 
-    .products h2 {
-      font-size: 32px;
-      margin-bottom: 40px;
+    /* MODAL */
+    .nb-modal-overlay {
+      display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.8); z-index: 1000;
+      align-items: center; justify-content: center;
     }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 30px;
-      max-width: 1000px;
-      margin: auto;
+    .nb-modal-overlay.open { display: flex; }
+    .nb-modal {
+      background: #3a0f50; border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 24px; padding: 40px 32px;
+      max-width: 420px; width: 90%; text-align: center;
+      position: relative; animation: popIn 0.25s cubic-bezier(.22,1,.36,1);
     }
-
-    .card {
-      background: white;
-      border-radius: 16px;
-      padding: 30px;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-      cursor: pointer;
-      transition: 0.3s;
-    }
-
-    .card:hover {
-      transform: translateY(-10px);
-    }
-
-    .card h3 {
-      font-size: 22px;
-      margin: 10px 0;
-    }
-
-    /* =======================
-       MODAL
-    ======================= */
-    .modal {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.6);
-      justify-content: center;
-      align-items: center;
-    }
-
-    .modal-content {
-      background: white;
-      padding: 40px;
-      border-radius: 15px;
-      max-width: 500px;
-      text-align: center;
-    }
-
-    .modal img {
-      width: 100%;
-      border-radius: 10px;
-    }
-
-    /* =======================
-       CONTACT SECTION
-    ======================= */
-    .contact {
-      text-align: center;
-      padding: 70px 20px;
-      background: #fff2cc;
-    }
-
-    .contact h2 {
-      font-size: 32px;
-      margin-bottom: 20px;
-    }
-
-    .contact-buttons {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-
-    .call {
-      background: #333;
-      color: white;
-    }
-
-    .whatsapp {
-      background: #25D366;
-      color: white;
-    }
-
-    /* =======================
-       FOOTER
-    ======================= */
-    footer {
-      margin-top: 40px;
-      padding: 30px;
-      background: #f4d03f;
-      text-align: center;
-    }
-
-    footer a {
-      text-decoration: none;
-      font-weight: bold;
-      color: black;
-    }
+    @keyframes popIn { from { transform: scale(0.85); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+    .nb-modal-top { height: 4px; border-radius: 24px 24px 0 0; background: linear-gradient(90deg, #844A8E, #f4d03f); margin: -40px -32px 30px; }
+    .nb-modal h2 { font-size: 22px; font-weight: 900; color: #fff; margin-bottom: 12px; }
+    .nb-modal p { font-size: 14px; color: rgba(255,255,255,0.55); line-height: 1.6; margin-bottom: 26px; }
+    .nb-modal-close { position: absolute; top: 16px; right: 20px; background: none; border: none; font-size: 18px; cursor: pointer; color: rgba(255,255,255,0.3); font-weight: 700; }
+    .nb-modal-close:hover { color: #f4d03f; }
+    .nb-mwa { display: block; background: #25D366; color: #fff; font-weight: 800; font-size: 15px; padding: 14px; border-radius: 50px; text-decoration: none; margin-bottom: 10px; transition: box-shadow 0.2s, transform 0.15s; }
+    .nb-mwa:hover { box-shadow: 0 0 24px rgba(37,211,102,0.4); transform: scale(1.02); }
+    .nb-mclose-btn { background: none; border: 1px solid rgba(255,255,255,0.15); color: rgba(255,255,255,0.4); padding: 12px; border-radius: 50px; cursor: pointer; font-size: 14px; width: 100%; font-weight: 600; }
+    .nb-mclose-btn:hover { border-color: rgba(255,255,255,0.3); color: rgba(255,255,255,0.7); }
   </style>
 </head>
-
 <body>
 
-  <!-- =======================
-       HEADER
-  ======================= -->
-  <header>
-    <img src="logo.png" class="logo" alt="Niafas Bites Logo">
-    <h1>Mini Bites</h1>
-    <p>Antojos irresistibles para todos los gustos</p>
+  <!-- HEADER -->
+  <header class="nb-header">
+    <div class="nb-header-bg"></div>
+    <div class="nb-sprinkles-l"></div>
+    <div class="nb-sprinkles-r"></div>
+    <div class="nb-glow"></div>
+    <div class="nb-header-content">
+      <img src="logo.png" class="nb-logo" alt="Niafas Bites Logo">
+      <h1>Mini Bites</h1>
+      <p>Antojos irresistibles para todos los gustos</p>
+      <div class="nb-pill">Hecho con amor artesanal</div>
+    </div>
   </header>
 
-  <!-- =======================
-       PRODUCTS SECTION
-  ======================= -->
-  <section class="products">
-    <h2>Nuestros Productos</h2>
-    <div class="grid">
-      <div class="card" onclick="openModal('Mini Cookies','Mini galletas caseras suaves y llenas de sabor.')">
-        <h3>Mini Cookies</h3>
-      </div>
-      <div class="card" onclick="openModal('Pan de Bono','Pan de bono tradicional colombiano con queso, suave por dentro y ligeramente crujiente por fuera.')">
-        <h3>Pan de Bono</h3>
-      </div>
-      <div class="card" onclick="openModal('Polvorosas','Deliciosas galletas de mantequilla que se derriten en tu boca.')">
-        <h3>Polvorosas</h3>
-      </div>
-      <div class="card" onclick="openModal('Trufas de Mani y Chocolate','Trufas de chocolate con delicioso sabor a maní.')">
-        <h3>Trufas de Mani y Chocolate</h3>
-      </div>
-      <div class="card" onclick="openModal('Barras de Cookies','Barras de galleta con intenso sabor a chocolate y su topping de chocolate.')">
-        <h3>Barras de Cookies</h3>
-      </div>
-    </div>
-  </section>
-
-  <!-- =======================
-       PRODUCT MODAL
-  ======================= -->
-  <div class="modal" id="productModal">
-    <div class="modal-content">
-      <h2 id="productTitle"></h2>
-      <p id="productDescription"></p>
-      <a id="whatsappBtn" target="_blank">
-        <button>Ordena por WhatsApp</button>
-      </a>
-      <br><br>
-      <button onclick="closeModal()">Cerrar</button>
-    </div>
+  <!-- MARQUEE -->
+  <div class="nb-strip">
+    <span class="nb-strip-inner">Mini Cookies &nbsp;·&nbsp; Pan de Bono &nbsp;·&nbsp; Polvorosas &nbsp;·&nbsp; Trufas de Maní y Chocolate &nbsp;·&nbsp; Barras de Cookies &nbsp;·&nbsp; Pedidos Especiales &nbsp;·&nbsp; Mini Cookies &nbsp;·&nbsp; Pan de Bono &nbsp;·&nbsp; Polvorosas &nbsp;·&nbsp; Trufas de Maní y Chocolate &nbsp;·&nbsp; Barras de Cookies &nbsp;·&nbsp; Pedidos Especiales &nbsp;·&nbsp;</span>
   </div>
 
-  <!-- =======================
-       CONTACT SECTION
-  ======================= -->
-  <section class="contact">
-    <h2>Contáctanos</h2>
-    <div class="contact-buttons">
-      <a href="tel:+584144332483">
-        <button class="call">Llámanos</button>
-      </a>
-      <a href="https://wa.me/584144332483" target="_blank">
-        <button class="whatsapp">WhatsApp</button>
-      </a>
+  <!-- PRODUCTS -->
+  <section class="nb-products">
+    <div class="nb-section-label">Lo que hacemos</div>
+    <h2>Nuestros Productos</h2>
+    <p class="nb-products-sub">Haz clic en cualquier producto para ordenar</p>
+    <div class="nb-grid" id="nbGrid"></div>
+  </section>
+
+  <!-- PROMO -->
+  <section class="nb-promo">
+    <div class="nb-promo-inner">
+      <div class="nb-promo-badge">Servicio especial</div>
+      <h3>Pedidos personalizados disponibles</h3>
+      <p>Cantidades especiales para eventos, cumpleaños y regalos corporativos. Háblanos por WhatsApp y te cotizamos.</p>
     </div>
   </section>
 
-  <!-- =======================
-       FOOTER
-  ======================= -->
-  <footer>
+  <!-- REVIEWS -->
+  <section class="nb-reviews">
+    <div class="nb-section-label">Testimonios</div>
+    <h2>Lo que dicen nuestros clientes</h2>
+    <p class="nb-reviews-sub">Más de 100 clientes felices</p>
+    <div class="nb-review-grid">
+      <div class="nb-rcard">
+        <div class="nb-stars">★★★★★</div>
+        <div class="nb-rtext">"Las Mini Cookies son una adicción. Las pedí para una reunión y desaparecieron en minutos!"</div>
+        <div class="nb-rname">María G.</div>
+      </div>
+      <div class="nb-rcard">
+        <div class="nb-stars">★★★★★</div>
+        <div class="nb-rtext">"El Pan de Bono sabe igualito al de mi abuela. ¡Qué recuerdos! 100% recomendado."</div>
+        <div class="nb-rname">Carlos M.</div>
+      </div>
+      <div class="nb-rcard">
+        <div class="nb-stars">★★★★★</div>
+        <div class="nb-rtext">"Las Trufas de Maní y Chocolate son el regalo perfecto. Todos quedan encantados."</div>
+        <div class="nb-rname">Valeria R.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="nb-contact">
+    <div class="nb-contact-glow"></div>
+    <div class="nb-section-label">Hablemos</div>
+    <h2>Ordenar es fácil</h2>
+    <p>Escríbenos y te atendemos al instante</p>
+    <div class="nb-btn-row">
+      <a href="tel:+584144332483" class="nb-btn nb-btn-call">Llámanos</a>
+      <a href="https://wa.me/584144332483" target="_blank" class="nb-btn nb-btn-wa">WhatsApp</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="nb-footer">
     <p>Síguenos en Instagram</p>
     <a href="https://instagram.com/niafasbites" target="_blank">@niafasbites</a>
   </footer>
 
-  <!-- =======================
-       SCRIPT
-  ======================= -->
-  <script>
-    function openModal(title, description) {
-      document.getElementById("productTitle").innerText = title;
-      document.getElementById("productDescription").innerText = description;
-      let message = "Hola! Quiero ordenar " + title + " de Niafas Bites.";
-      document.getElementById("whatsappBtn").href = "https://wa.me/584144332483?text=" + encodeURIComponent(message);
-      document.getElementById("productModal").style.display = "flex";
-    }
+  <!-- MODAL -->
+  <div class="nb-modal-overlay" id="nbModalBg">
+    <div class="nb-modal">
+      <div class="nb-modal-top"></div>
+      <button class="nb-modal-close" onclick="closeNbModal()">&#x2715;</button>
+      <h2 id="nbModalTitle"></h2>
+      <p id="nbModalDesc"></p>
+      <a id="nbModalWa" target="_blank" class="nb-mwa">Ordenar por WhatsApp</a>
+      <button onclick="closeNbModal()" class="nb-mclose-btn">Cerrar</button>
+    </div>
+  </div>
 
-    function closeModal() {
-      document.getElementById("productModal").style.display = "none";
+  <script>
+    const products = [
+      { name: 'Mini Cookies', desc: 'Mini galletas caseras suaves y llenas de sabor. ¡Imposible comer solo una!' },
+      { name: 'Pan de Bono', desc: 'Pan de bono tradicional colombiano con queso, suave por dentro y ligeramente crujiente por fuera.' },
+      { name: 'Polvorosas', desc: 'Deliciosas galletas de mantequilla que se derriten en tu boca. Una experiencia única.' },
+      { name: 'Trufas de Maní y Chocolate', desc: 'Trufas de chocolate con delicioso sabor a maní. El regalo perfecto para cualquier ocasión.' },
+      { name: 'Barras de Cookies', desc: 'Barras de galleta con intenso sabor a chocolate y su irresistible topping de chocolate.' },
+    ];
+    const arrowSVG = `<svg viewBox="0 0 14 14" xmlns="http://www.w3.org/2000/svg"><polyline points="2,12 12,2" stroke-width="2" stroke-linecap="round" fill="none"/><polyline points="4,2 12,2 12,10" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>`;
+    const grid = document.getElementById('nbGrid');
+    products.forEach((p, i) => {
+      const card = document.createElement('div');
+      card.className = 'nb-card';
+      card.innerHTML = `<div class="nb-card-num">0${i+1}</div><h3>${p.name}</h3><p>${p.desc}</p><div class="nb-card-arrow">${arrowSVG}</div>`;
+      card.onclick = () => openNbModal(p.name, p.desc);
+      grid.appendChild(card);
+    });
+    function openNbModal(name, desc) {
+      document.getElementById('nbModalTitle').innerText = name;
+      document.getElementById('nbModalDesc').innerText = desc;
+      document.getElementById('nbModalWa').href = 'https://wa.me/584144332483?text=' + encodeURIComponent('Hola! Quiero ordenar ' + name + ' de Niafas Bites.');
+      document.getElementById('nbModalBg').className = 'nb-modal-overlay open';
+    }
+    function closeNbModal() {
+      document.getElementById('nbModalBg').className = 'nb-modal-overlay';
     }
   </script>
 
