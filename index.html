@@ -8,10 +8,8 @@
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: 'Segoe UI', sans-serif; background: #2d0a3e; color: #fff; overflow-x: hidden; }
 
-    /* HEADER */
     .nb-header {
-      background: #2d0a3e;
-      padding: 0; text-align: center; position: relative;
+      background: #2d0a3e; padding: 0; text-align: center; position: relative;
       overflow: hidden; min-height: 420px;
       display: flex; flex-direction: column; align-items: center; justify-content: center;
     }
@@ -19,22 +17,15 @@
       position: absolute; inset: 0;
       background: radial-gradient(ellipse 80% 60% at 50% 40%, #7a3090 0%, #4a1060 55%, #2d0a3e 100%);
     }
-    .nb-sprinkles-l {
-      position: absolute; top: 0; left: 0; width: 200px; height: 100%;
-      background-image: url('chocolate-sprinkles.png');
-      background-repeat: no-repeat; background-position: left top; background-size: contain; opacity: 0.7;
-    }
-    .nb-sprinkles-r {
-      position: absolute; top: 0; right: 0; width: 200px; height: 100%;
-      background-image: url('chocolate-sprinkles.png');
-      background-repeat: no-repeat; background-position: right top; background-size: contain;
-      opacity: 0.7; transform: scaleX(-1);
-    }
     .nb-glow {
       position: absolute; top: 30%; left: 50%; transform: translateX(-50%);
       width: 400px; height: 200px;
       background: radial-gradient(ellipse, rgba(244,208,63,0.2) 0%, transparent 70%);
       pointer-events: none;
+    }
+    .nb-deco-svg {
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      pointer-events: none; z-index: 1;
     }
     .nb-header-content { position: relative; z-index: 2; padding: 40px 20px; }
     .nb-logo { width: 190px; filter: drop-shadow(0 0 24px rgba(244,208,63,0.35)); margin-bottom: 18px; }
@@ -55,7 +46,6 @@
       50% { box-shadow: 0 0 0 8px rgba(244,208,63,0); }
     }
 
-    /* MARQUEE */
     .nb-strip { background: #f4d03f; padding: 10px 0; overflow: hidden; white-space: nowrap; }
     .nb-strip-inner {
       display: inline-block; animation: marquee 18s linear infinite;
@@ -63,15 +53,11 @@
     }
     @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
-    /* PRODUCTS */
     .nb-products { background: #3a0f50; padding: 70px 24px; text-align: center; }
     .nb-section-label { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: #f4d03f; font-weight: 700; margin-bottom: 10px; }
     .nb-products h2 { font-size: 36px; font-weight: 900; color: #fff; margin-bottom: 6px; letter-spacing: -0.5px; }
     .nb-products-sub { font-size: 14px; color: rgba(255,255,255,0.45); margin-bottom: 48px; }
-    .nb-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-      gap: 16px; max-width: 980px; margin: 0 auto;
-    }
+    .nb-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 16px; max-width: 980px; margin: 0 auto; }
     .nb-card {
       background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.1);
       border-radius: 20px; padding: 32px 20px 24px; cursor: pointer;
@@ -97,7 +83,6 @@
     .nb-card-arrow svg { width: 14px; height: 14px; stroke: #f4d03f; fill: none; transition: stroke 0.2s; }
     .nb-card:hover .nb-card-arrow svg { stroke: #2d0a3e; }
 
-    /* PROMO */
     .nb-promo { background: #844A8E; padding: 60px 24px; text-align: center; position: relative; overflow: hidden; }
     .nb-promo::before { content: ''; position: absolute; top: -80px; right: -80px; width: 300px; height: 300px; background: rgba(244,208,63,0.08); border-radius: 50%; }
     .nb-promo::after { content: ''; position: absolute; bottom: -100px; left: -60px; width: 260px; height: 260px; background: rgba(0,0,0,0.1); border-radius: 50%; }
@@ -106,7 +91,6 @@
     .nb-promo h3 { font-size: 30px; font-weight: 900; color: #fff2cc; margin-bottom: 10px; letter-spacing: -0.5px; }
     .nb-promo p { font-size: 15px; color: rgba(255,242,204,0.7); max-width: 500px; margin: 0 auto; }
 
-    /* REVIEWS */
     .nb-reviews { background: #3a0f50; padding: 70px 24px; text-align: center; }
     .nb-reviews h2 { font-size: 32px; font-weight: 900; color: #fff; margin-bottom: 6px; letter-spacing: -0.5px; }
     .nb-reviews-sub { font-size: 14px; color: rgba(255,255,255,0.4); margin-bottom: 44px; }
@@ -117,7 +101,6 @@
     .nb-rtext { font-size: 14px; color: rgba(255,255,255,0.6); line-height: 1.65; margin-bottom: 16px; font-style: italic; }
     .nb-rname { font-size: 12px; font-weight: 800; color: #d7a0e8; letter-spacing: 1px; text-transform: uppercase; }
 
-    /* CONTACT */
     .nb-contact { background: #2d0a3e; padding: 80px 24px; text-align: center; position: relative; overflow: hidden; }
     .nb-contact-glow { position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 600px; height: 300px; background: radial-gradient(ellipse, rgba(132,74,142,0.35) 0%, transparent 70%); pointer-events: none; }
     .nb-contact h2 { font-size: 40px; font-weight: 900; color: #fff; margin-bottom: 12px; letter-spacing: -1px; position: relative; z-index: 1; }
@@ -130,23 +113,19 @@
     .nb-btn-call { background: rgba(255,255,255,0.1); color: #fff; border: 1px solid rgba(255,255,255,0.2); }
     .nb-btn-call:hover { background: rgba(255,255,255,0.16); }
 
-    /* FOOTER */
     .nb-footer { background: #f4d03f; padding: 22px 20px; text-align: center; }
     .nb-footer p { font-size: 13px; font-weight: 700; color: #2d0a3e; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 1px; }
     .nb-footer a { font-size: 18px; font-weight: 900; color: #2d0a3e; text-decoration: none; letter-spacing: 0.5px; }
     .nb-footer a:hover { text-decoration: underline; }
 
-    /* MODAL */
     .nb-modal-overlay {
       display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(0,0,0,0.8); z-index: 1000;
-      align-items: center; justify-content: center;
+      background: rgba(0,0,0,0.8); z-index: 1000; align-items: center; justify-content: center;
     }
     .nb-modal-overlay.open { display: flex; }
     .nb-modal {
       background: #3a0f50; border: 1px solid rgba(255,255,255,0.12);
-      border-radius: 24px; padding: 40px 32px;
-      max-width: 420px; width: 90%; text-align: center;
+      border-radius: 24px; padding: 40px 32px; max-width: 420px; width: 90%; text-align: center;
       position: relative; animation: popIn 0.25s cubic-bezier(.22,1,.36,1);
     }
     @keyframes popIn { from { transform: scale(0.85); opacity: 0; } to { transform: scale(1); opacity: 1; } }
@@ -163,12 +142,79 @@
 </head>
 <body>
 
-  <!-- HEADER -->
   <header class="nb-header">
     <div class="nb-header-bg"></div>
-    <div class="nb-sprinkles-l"></div>
-    <div class="nb-sprinkles-r"></div>
     <div class="nb-glow"></div>
+    <svg class="nb-deco-svg" viewBox="0 0 900 420" xmlns="http://www.w3.org/2000/svg">
+      <g opacity="0.55" transform="translate(60,30) rotate(-15)">
+        <circle cx="0" cy="0" r="32" fill="#c8860a"/>
+        <circle cx="0" cy="0" r="32" fill="none" stroke="#e8a020" stroke-width="2"/>
+        <rect x="-5" y="-8" width="10" height="16" rx="3" fill="#5a2a00" opacity="0.8"/>
+        <rect x="8" y="4" width="9" height="14" rx="3" fill="#5a2a00" opacity="0.8" transform="rotate(20)"/>
+        <rect x="-16" y="2" width="9" height="13" rx="3" fill="#5a2a00" opacity="0.8" transform="rotate(-10)"/>
+        <circle cx="6" cy="-14" r="3" fill="#5a2a00" opacity="0.7"/>
+        <circle cx="-10" cy="-12" r="2.5" fill="#5a2a00" opacity="0.7"/>
+      </g>
+      <g opacity="0.5" transform="translate(130,90) rotate(30)">
+        <rect x="-4" y="-10" width="8" height="20" rx="4" fill="#6b3a00"/>
+        <rect x="-4" y="-10" width="8" height="20" rx="4" fill="none" stroke="#a05a10" stroke-width="1"/>
+      </g>
+      <g opacity="0.4" transform="translate(30,130) rotate(-20)">
+        <rect x="-3" y="-9" width="6" height="18" rx="3" fill="#6b3a00"/>
+      </g>
+      <g opacity="0.35" transform="translate(170,50) rotate(50)">
+        <rect x="-3" y="-8" width="6" height="16" rx="3" fill="#8b5a10"/>
+      </g>
+      <circle cx="100" cy="160" r="4" fill="#f4d03f" opacity="0.35"/>
+      <circle cx="45" cy="200" r="3" fill="#d7a0e8" opacity="0.35"/>
+      <circle cx="155" cy="130" r="3" fill="#f4d03f" opacity="0.3"/>
+      <polygon points="30,260 34,248 38,260 50,260 41,268 44,280 34,272 24,280 27,268 18,260" fill="#f4d03f" opacity="0.3"/>
+      <g opacity="0.55" transform="translate(835,40) rotate(20)">
+        <circle cx="0" cy="0" r="34" fill="#c8860a"/>
+        <circle cx="0" cy="0" r="34" fill="none" stroke="#e8a020" stroke-width="2"/>
+        <rect x="-5" y="-9" width="10" height="18" rx="3" fill="#5a2a00" opacity="0.8"/>
+        <rect x="9" y="5" width="9" height="14" rx="3" fill="#5a2a00" opacity="0.8" transform="rotate(20)"/>
+        <rect x="-17" y="3" width="9" height="13" rx="3" fill="#5a2a00" opacity="0.8" transform="rotate(-10)"/>
+        <circle cx="7" cy="-15" r="3.5" fill="#5a2a00" opacity="0.7"/>
+        <circle cx="-11" cy="-13" r="3" fill="#5a2a00" opacity="0.7"/>
+      </g>
+      <g opacity="0.5" transform="translate(770,95) rotate(-25)">
+        <rect x="-4" y="-10" width="8" height="20" rx="4" fill="#6b3a00"/>
+        <rect x="-4" y="-10" width="8" height="20" rx="4" fill="none" stroke="#a05a10" stroke-width="1"/>
+      </g>
+      <g opacity="0.4" transform="translate(868,145) rotate(15)">
+        <rect x="-3" y="-9" width="6" height="18" rx="3" fill="#6b3a00"/>
+      </g>
+      <g opacity="0.35" transform="translate(730,55) rotate(-40)">
+        <rect x="-3" y="-8" width="6" height="16" rx="3" fill="#8b5a10"/>
+      </g>
+      <circle cx="800" cy="165" r="4" fill="#f4d03f" opacity="0.35"/>
+      <circle cx="860" cy="195" r="3" fill="#d7a0e8" opacity="0.35"/>
+      <circle cx="750" cy="120" r="3" fill="#f4d03f" opacity="0.3"/>
+      <polygon points="870,255 874,243 878,255 890,255 881,263 884,275 874,267 864,275 867,263 858,255" fill="#f4d03f" opacity="0.3"/>
+      <g opacity="0.35" transform="translate(90,310) rotate(10)">
+        <circle cx="0" cy="0" r="20" fill="#c8860a"/>
+        <rect x="-3" y="-6" width="6" height="12" rx="3" fill="#5a2a00" opacity="0.8"/>
+        <rect x="6" y="2" width="6" height="10" rx="3" fill="#5a2a00" opacity="0.8" transform="rotate(15)"/>
+        <circle cx="-7" cy="-8" r="2" fill="#5a2a00" opacity="0.7"/>
+      </g>
+      <g opacity="0.35" transform="translate(820,320) rotate(-12)">
+        <circle cx="0" cy="0" r="22" fill="#c8860a"/>
+        <rect x="-3" y="-6" width="6" height="12" rx="3" fill="#5a2a00" opacity="0.8"/>
+        <rect x="6" y="2" width="6" height="10" rx="3" fill="#5a2a00" opacity="0.8" transform="rotate(15)"/>
+        <circle cx="-7" cy="-8" r="2" fill="#5a2a00" opacity="0.7"/>
+      </g>
+      <circle cx="180" cy="350" r="3.5" fill="#f4d03f" opacity="0.25"/>
+      <circle cx="720" cy="360" r="3" fill="#f4d03f" opacity="0.25"/>
+      <circle cx="50" cy="380" r="2.5" fill="#d7a0e8" opacity="0.2"/>
+      <circle cx="850" cy="370" r="2.5" fill="#d7a0e8" opacity="0.2"/>
+      <g opacity="0.3" transform="translate(150,380) rotate(60)">
+        <rect x="-2.5" y="-7" width="5" height="14" rx="2.5" fill="#8b5a10"/>
+      </g>
+      <g opacity="0.3" transform="translate(760,390) rotate(-50)">
+        <rect x="-2.5" y="-7" width="5" height="14" rx="2.5" fill="#8b5a10"/>
+      </g>
+    </svg>
     <div class="nb-header-content">
       <img src="logo.png" class="nb-logo" alt="Niafas Bites Logo">
       <h1>Mini Bites</h1>
@@ -177,12 +223,10 @@
     </div>
   </header>
 
-  <!-- MARQUEE -->
   <div class="nb-strip">
     <span class="nb-strip-inner">Mini Cookies &nbsp;·&nbsp; Pan de Bono &nbsp;·&nbsp; Polvorosas &nbsp;·&nbsp; Trufas de Maní y Chocolate &nbsp;·&nbsp; Barras de Cookies &nbsp;·&nbsp; Pedidos Especiales &nbsp;·&nbsp; Mini Cookies &nbsp;·&nbsp; Pan de Bono &nbsp;·&nbsp; Polvorosas &nbsp;·&nbsp; Trufas de Maní y Chocolate &nbsp;·&nbsp; Barras de Cookies &nbsp;·&nbsp; Pedidos Especiales &nbsp;·&nbsp;</span>
   </div>
 
-  <!-- PRODUCTS -->
   <section class="nb-products">
     <div class="nb-section-label">Lo que hacemos</div>
     <h2>Nuestros Productos</h2>
@@ -190,7 +234,6 @@
     <div class="nb-grid" id="nbGrid"></div>
   </section>
 
-  <!-- PROMO -->
   <section class="nb-promo">
     <div class="nb-promo-inner">
       <div class="nb-promo-badge">Servicio especial</div>
@@ -199,7 +242,6 @@
     </div>
   </section>
 
-  <!-- REVIEWS -->
   <section class="nb-reviews">
     <div class="nb-section-label">Testimonios</div>
     <h2>Lo que dicen nuestros clientes</h2>
@@ -223,7 +265,6 @@
     </div>
   </section>
 
-  <!-- CONTACT -->
   <section class="nb-contact">
     <div class="nb-contact-glow"></div>
     <div class="nb-section-label">Hablemos</div>
@@ -235,13 +276,11 @@
     </div>
   </section>
 
-  <!-- FOOTER -->
   <footer class="nb-footer">
     <p>Síguenos en Instagram</p>
     <a href="https://instagram.com/niafasbites" target="_blank">@niafasbites</a>
   </footer>
 
-  <!-- MODAL -->
   <div class="nb-modal-overlay" id="nbModalBg">
     <div class="nb-modal">
       <div class="nb-modal-top"></div>
@@ -280,6 +319,5 @@
       document.getElementById('nbModalBg').className = 'nb-modal-overlay';
     }
   </script>
-
 </body>
 </html>
